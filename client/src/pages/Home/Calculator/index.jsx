@@ -82,9 +82,15 @@ const Calculator = ({ illumination }) => {
   }, []);
 
   return (
-    <main className={`flex flex-col items-center py-10 space-y-10 ${isLightMode ? 'bg-top-light' : 'bg-top-dark'}`}>
+    <main
+      className={`flex flex-col items-center py-10 space-y-10 ${
+        isLightMode ? "bg-top-light" : "bg-top-dark"
+      }`}
+    >
       <h1
-        className={`text-6xl sm:text-5xl font-bold lg:mb-0 ${isLightMode ? 'text-black' : 'text-customBlue'}`}
+        className={`text-6xl sm:text-5xl  text-center font-bold lg:mb-0 ${
+          isLightMode ? "text-black" : "text-customBlue"
+        }`}
         data-aos="fade-up-left"
       >
         Quote Calculator
@@ -93,7 +99,10 @@ const Calculator = ({ illumination }) => {
       {/* Add left image and main content side by side */}
       <div className="flex flex-col lg:flex-row max-w-7xl w-10/12 mx-auto gap-10">
         {/* Left side image */}
-        <section className="w-full lg:w-2/4 mb-10 lg:mb-8 mt-8" data-aos="fade-up-right">
+        <section
+          className="w-full lg:w-2/4 mb-10 lg:mb-8 mt-8"
+          data-aos="fade-up-right"
+        >
           <img
             src="https://cdn.dribbble.com/users/1961650/screenshots/5641178/media/9dff9982fefd62111032346e2cd6edd0.gif"
             alt="Calculator"
@@ -104,7 +113,9 @@ const Calculator = ({ illumination }) => {
         {/* Right side: Main form content */}
         <form
           onSubmit={handleSubmit}
-          className={`h-auto w-full lg:w-2/3 flex flex-col items-center justify-center mb-10 lg:mb-0 p-4 ${isLightMode ? 'bg-white text-black' : 'bg-dark-800 text-white'}`}
+          className={`h-auto w-full lg:w-2/3 flex flex-col items-center justify-center mb-10 lg:mb-0 py-6 p-4 ${
+            isLightMode ? "bg-white text-black" : "bg-dark-800 text-white"
+          }`}
           data-aos="fade-left"
         >
           {!isShowCalcForm ? (
@@ -122,7 +133,11 @@ const Calculator = ({ illumination }) => {
                     max={5}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["Number of pages"]}
                 </div>
               </section>
@@ -140,7 +155,11 @@ const Calculator = ({ illumination }) => {
                     max={5}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["Style of design"]}
                 </div>
               </section>
@@ -155,7 +174,11 @@ const Calculator = ({ illumination }) => {
                     max={4}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["Copywriting no. of pages"]}
                 </div>
               </section>
@@ -170,7 +193,11 @@ const Calculator = ({ illumination }) => {
                     max={4}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["SEO placement guarantee"]}
                 </div>
               </section>
@@ -185,7 +212,11 @@ const Calculator = ({ illumination }) => {
                     max={2}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["Responsive design"]}
                 </div>
               </section>
@@ -200,7 +231,11 @@ const Calculator = ({ illumination }) => {
                     max={4}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["Database integration"]}
                 </div>
               </section>
@@ -215,7 +250,11 @@ const Calculator = ({ illumination }) => {
                     max={4}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes["E-Commerce functionality"]}
                 </div>
               </section>
@@ -230,11 +269,14 @@ const Calculator = ({ illumination }) => {
                     max={4}
                   />
                 </div>
-                <div className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${isLightMode ? 'border-black' : 'border-white'}`}>
+                <div
+                  className={`w-32 h-10 border-2 rounded-md grid place-items-center text-lg font-normal shadow-md ${
+                    isLightMode ? "border-black" : "border-white"
+                  }`}
+                >
                   {calcQuotes.CMS}
                 </div>
               </section>
-
             </main>
           ) : (
             <CalcForm
@@ -244,23 +286,37 @@ const Calculator = ({ illumination }) => {
           )}
 
           {!isShowCalcForm ? (
-            <button
-              onClick={() => setIsShowCalcForm(!isShowCalcForm)}
-              className={`border-2 px-8 py-2 text-xl font-normal rounded-md ${isLightMode ? 'border-blue-800 bg-customBlueHover hover:bg-customBlue text-white hover:border-white' : 'border-white bg-customBlueHover hover:bg-customBlueHover hover:text-black hover:border-white'}`}
-            >
-              Next
-            </button>
+            <div className="p-4">
+              <button
+                onClick={() => setIsShowCalcForm(!isShowCalcForm)}
+                className={`border-2 px-8 py-2 text-xl font-normal rounded-md ${
+                  isLightMode
+                    ? "border-blue-800 bg-customBlueHover hover:bg-customBlue text-white hover:border-white"
+                    : "border-white bg-customBlueHover hover:bg-customBlueHover hover:text-black hover:border-white"
+                }`}
+              >
+                Next
+              </button>
+            </div>
           ) : (
             <div className="space-x-2.5">
               <button
                 onClick={() => setIsShowCalcForm(!isShowCalcForm)}
-                className={`border px-5 py-1.5 text-lg rounded-md ${isLightMode ? 'border-slate-200  hover:bg-customBlueHover' : 'border-slate-200  hover:bg-customBlueHover'}`}
+                className={`border px-5 py-1.5 text-lg rounded-md ${
+                  isLightMode
+                    ? "border-slate-200  hover:bg-customBlueHover"
+                    : "border-slate-200  hover:bg-customBlueHover"
+                }`}
               >
                 Go back
               </button>
               <button
                 type="submit"
-                className={`border px-5 py-1.5 text-lg rounded-md ${isLightMode ? 'border-slate-200 hover:border-blue-400 hover:bg-customBlueHover' : 'border-slate-200 hover:border-blue-400 hover:bg-customBlueHover'}`}
+                className={`border px-5 py-1.5 text-lg rounded-md ${
+                  isLightMode
+                    ? "border-slate-200 hover:border-blue-400 hover:bg-customBlueHover"
+                    : "border-slate-200 hover:border-blue-400 hover:bg-customBlueHover"
+                }`}
               >
                 Submit
               </button>
