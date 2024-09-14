@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+@layer components {
+    .inactive {
+        grid-template-rows: 0fr;
+    }
+
+    .active {
+        grid-template-rows: 1fr;
+    }
+
+    /* Accessibility */
+    .invertColors {
+        filter: invert();
+        overflow: hidden;
+    }
+}
+
+
+
+  
+  
+  
+  /* Blinking cursor animation */
+  @keyframes blink-caret {
+    from, to {
+      border-color: transparent;
+    }
+    50% {
+      border-color: white;
+    }
+  }
+  
+
+
+/* Light mode styles */
+
+
+/* Light mode styles */
+/* Global Styles */
+body.dark-mode {
+  background-color: #1a202c; /* Dark background */
+  color: #f0f0f1; /* White text */
+}
+
+body.light-mode {
+  background-color: #f7fafc; /* Light background */
+  color: #000; 
+  border: black;/* Dark text */
+}
+
+body.light-mode p {
+  color: #1a202c; /* Dark color for light mode */
+}
