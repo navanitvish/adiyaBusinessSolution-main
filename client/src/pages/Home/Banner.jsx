@@ -139,7 +139,7 @@ const Banner = () => {
               className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
                 accessibility.hideImages
                   ? "bg-none"
-                  : "bg-[url(/day-mobile.png)]"
+                  : "bg-[url(/day-mobile.jpg)] object-cover" 
               }`}
             >
               <div className="absolute bottom-0 left-0 flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light  bg-gradient-to-b h-full">
@@ -161,7 +161,7 @@ const Banner = () => {
                 <button
                   onClick={() => dispatch(setIsOpenRequestProposal(true))}
                   className={`border ${
-                    isLightMode ? "border-black" : "border-white bg-customBlue"
+                    isLightMode ? " text-blue-50 font-normal text-xl bg-customBlue" : "border-white bg-customBlue"
                   } px-5 py-2.5 rounded-md text-lg hover:bg-customBlueHover hover:text-white duration-200 w-fit`}
                 >
                   Get my custom quote
