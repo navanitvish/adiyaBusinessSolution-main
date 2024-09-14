@@ -53,7 +53,7 @@ const Banner = () => {
           </h1>
           <p
             className={`hidden lg:block  " ${
-              isLightMode ? " text-lightText " : " text-lightText font-normal text-md "
+              isLightMode ? " text-lightText text-xl font-normal " : " text-lightText font-normal text-md  "
             }`}
           >
             We proudly stand as the sole Startup Kickstarter in the Indian
