@@ -278,7 +278,7 @@ const Footer = () => {
         </div>
 
         <p
-          className={`text-sm font-normal mt-8 text-center lg:text-left ${
+          className={`text-sm font-normal text-left mt-8  lg:text-left ${
             isLightMode ? "text-gray-800" : "text-gray-200"
           }`}
         >
