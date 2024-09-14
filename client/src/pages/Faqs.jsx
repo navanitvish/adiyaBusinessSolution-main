@@ -8,7 +8,7 @@ const Faqs = () => {
   const { isLightMode } = useTheme(); // Use isLightMode instead of theme
 
   return (
-    <section className={`md:mx-20 mt-7 mb-10 w-10/12 mx-auto ${isLightMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
+    <section className={`md:mx-20 mt-7 mb-10  mx-auto ${isLightMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
       <h1 className={`text-6xl md:text-6xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
         Frequently asked <span className="text-customBlue">questions?</span>
       </h1>
