@@ -3,13 +3,13 @@ export const services = {
     heading: "App & website development",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal">
           Bring your product concept to life. We are web & app development
           company that turns your ideas into button new driving force of your
           business. We hire brilliant web and mobile app developers to deliver
           projects on time and maintain the top-notch code standards.
         </p>
-        <p className="text-md font-normal text-justify ">
+        <p className="text-md font-normal">
           <span className="block text-xl md:text-2xl font-bold ">App development</span>
           <span className=" md:text-xl md:font-medium lg:font-normal">
             App development creates mobile software using languages like Swift
@@ -19,7 +19,7 @@ export const services = {
             to app stores, with ongoing maintenance for bug fixes and updates.
           </span>
         </p>
-        <p className="text-md font-normal text-justify ">
+        <p className="text-md font-normal ">
           <span className="block text-xl md:text-2xl font-bold ">Website development</span>
           <span className=" md:text-xl md:font-medium lg:font-normal">
             Web development builds and maintains websites using HTML, CSS, and
@@ -38,7 +38,7 @@ export const services = {
     heading: "Digital marketing",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify ">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           Also called online marketing, is the promotion of brands to connect
           with potential customers using the internet and other forms of digital
           communication. This includes not only email, social media, and
@@ -46,7 +46,7 @@ export const services = {
           marketing channel. Essentially, if button marketing campaign involves
           digital communication, it's digital marketing.
         </p>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify ">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           Digital marketing is a dynamic strategy leveraging online channels to
           promote products or services. It encompasses various tactics,
           including social media marketing, content marketing, email campaigns,
@@ -56,9 +56,9 @@ export const services = {
           creating valuable, relevant content to attract and retain a target
           audience.
         </p>
-        <p className="text-md font-normal text-justify">
-          <span className="block text-xl md:text-2xl font-bold  ">Marketing & analytics</span>
-          <span className=" md:text-xl md:font-medium lg:font-normal">
+        <p className=" font-normal ">
+          <span className="block text-xl md:text-2xl font-bold ">Marketing & analytics</span>
+          <span className=" text-md md:text-xl md:font-medium lg:font-normal">
             Tools like Google Analytics and social media insights aid in
             data-driven decision-making. Continuous analysis allows marketers to
             refine strategies, optimize campaigns, and allocate resources
@@ -75,7 +75,7 @@ export const services = {
     heading: "CRM & ERP",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal">
           Enterprises Digital Transformation Services CRM (Customer Relationship
           Management) and ERP (Enterprise Resource Planning) software are
           powerful tools for button business or enterprise to use. CRM handles
@@ -83,11 +83,11 @@ export const services = {
           customise the software as per your requirement so that you life become
           easy.
         </p>
-        <p className="text-md font-normal ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold ">
             Customer relationship management
           </span>
-          <span className=" md:text-xl md:font-medium lg:font-normal   text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             App development creates mobile software using languages like Swift
             or Kotlin, emphasizing a visually pleasing and user-friendly
             interface. Backend development manages server logic and APIs,
@@ -95,9 +95,9 @@ export const services = {
             to app stores, with ongoing maintenance for bug fixes and updates.
           </span>
         </p>
-        <p className="text-md font-normal text-justify">
+        <p className=" font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">Enterprise resource planning</span>
-          <span className=" md:text-xl md:font-medium lg:font-normal">
+          <span className=" max-sm:text-md md:text-xl md:font-normal lg:font-normal">
             ERP systems integrate core business processes like finance, human
             resources, inventory, and supply chain into a unified platform. This
             integration promotes real-time data sharing, enhancing
@@ -116,7 +116,7 @@ export const services = {
     heading: "Pilot run & market fit testing",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           The pilot run is button testing process to ensure your entire
           production is on the right track and in control. A pilot run is the
           test production run that is implemented at the beginning of production
@@ -124,8 +124,8 @@ export const services = {
           the production line, We also Check the feasibility of the product with
           the market share of the product.
         </p>
-        <p className="text-md font-normal ">
-          <span className="block text-xl md:text-2xl font-bold  text-justify">Pilot run</span>
+        <p className="text-md font-medium ">
+          <span className="block text-xl md:text-2xl font-bold ">Pilot run</span>
           <span className=" md:text-xl md:font-medium lg:font-normal">
             A pilot run is a small-scale implementation of a product, service,
             or process before its full-scale launch. It allows companies to
@@ -136,7 +136,7 @@ export const services = {
             risks before a widespread launch.
           </span>
         </p>
-        <p className="text-md font-normal text-justify ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">Market fit testing</span>
           <span className=" md:text-xl md:font-medium lg:font-normal">
             Market fit testing is the process of evaluating how well a product
@@ -157,7 +157,7 @@ export const services = {
     heading: "Investment deck",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           What is an Investor Deck? An investor deck is usually button slide
           deck designed to give button short summary of your company, your
           business plan and your startup vision. Similar to button pitch deck,
@@ -165,7 +165,7 @@ export const services = {
           investors. They're are primarily used by businesses trying to convince
           clients or investors to work with them.
         </p>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           The deck often includes key elements such as the problem the business
           is solving, the unique solution it offers, market size and trends,
           competitive landscape, revenue model, and the team's qualifications.
@@ -173,11 +173,11 @@ export const services = {
           compelling, aiming to generate investor interest and support for
           funding the venture.
         </p>
-        <p className="text-md font-normal ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">
             Components of an investment deck
           </span>
-          <span className=" md:text-xl md:font-medium lg:font-normal text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             Crucial components of an investment deck include a concise executive
             summary, detailing the business concept and its potential; a market
             analysis, showcasing a deep understanding of the industry and target
@@ -197,16 +197,16 @@ export const services = {
     heading: "Research & market penetration",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal">
           Market penetration is button measure of how much button product or
           service is being used by customers compared to the total estimated
           market for that product or service. Market penetration can also be
           used in developing strategies employed to increase the market share of
           button particular product or service.
         </p>
-        <p className="text-md font-normal ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">Research in business strategy</span>
-          <span className=" md:text-xl md:font-medium lg:font-normal text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             Research plays a pivotal role in business strategy, guiding
             decision-making and shaping a company's direction. It involves
             gathering, analyzing, and interpreting information about markets,
@@ -217,9 +217,9 @@ export const services = {
             market landscape.
           </span>
         </p>
-        <p className="text-md font-normal  ">
+        <p className="text-md font-medium  ">
           <span className="block text-xl md:text-2xl font-bold ">Market penetration strategy</span>
-          <span className=" md:text-xl md:font-medium lg:font-normal text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             Market penetration is a strategic approach aimed at increasing a
             company's market share within existing markets. This involves
             intensifying efforts to sell existing products or services to
@@ -241,14 +241,14 @@ export const services = {
     heading: "Game & graphic development",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           Enterprises Digital Transformation Services Development of traditional
           commercial PC and console games is normally funded by button publisher
           and can take several years to reach completion. Indie games usually
           take less time and money and can be produced by individuals and
           smaller developers.
         </p>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify ">
+        <p className="text-md md:text-xl font-medium lg:font-normal ">
           The process includes concept ideation, storyboarding, coding the game
           mechanics, and implementing engaging visuals. Game developers often
           work collaboratively in teams to bring a cohesive and entertaining
@@ -256,7 +256,7 @@ export const services = {
           reality, game development continues to evolve, offering immersive and
           innovative gaming experiences across various platforms.
         </p>
-        <p className="text-md font-normal text-justify">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold ">Graphic development in games</span>
           <span className=" md:text-xl md:font-medium lg:font-normal">
             Graphic development is a crucial aspect of game design, encompassing
@@ -280,7 +280,7 @@ export const services = {
     heading: "Onboarding & BDM",
     para: (
       <>
-        <p className="text-md md:text-xl font-medium lg:font-normal text-justify">
+        <p className="text-md md:text-xl font-medium lg:font-normal">
           What Is vendor onboarding? Vendor onboarding is the process of
           registering new suppliers in your company's vendor management systems,
           and getting them set up with your tools, processes, and workflows in
@@ -288,9 +288,9 @@ export const services = {
           look after the progress of onboarding to make strategy and marketing
           material for onboard.
         </p>
-        <p className="text-md font-normal text-justify ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">Onboarding process</span>
-          <span className=" md:text-xl md:font-medium lg:font-normal text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             Onboarding is a strategic process that introduces new employees to a
             company's culture, policies, and procedures. It encompasses
             orientation, training, and integration, fostering a smooth
@@ -301,11 +301,11 @@ export const services = {
             and enhance overall job satisfaction.
           </span>
         </p>
-        <p className="text-md font-normal ">
+        <p className="text-md font-medium ">
           <span className="block text-xl md:text-2xl font-bold  ">
             Business development manager role
           </span>
-          <span className=" md:text-xl md:font-medium lg:font-normal text-justify">
+          <span className=" md:text-xl md:font-medium lg:font-normal">
             A Business Development Manager (BDM) is a key player in a company's
             growth strategy. Responsible for identifying new business
             opportunities, fostering relationships, and driving revenue, the BDM

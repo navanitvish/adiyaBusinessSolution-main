@@ -29,7 +29,7 @@ const Banner = () => {
 
   return (
     <main
-      className={`relative h-auto lg:h-screen  flex flex-col lg:flex-row ${
+      className={`relative h-auto lg:h-screen text-justify tracking-wide flex flex-col lg:flex-row ${
         isLightMode ? "text-black bg-white" : "dark:text-white bg-gray-900"
       } transition-colors duration-300`}
     >
@@ -45,15 +45,15 @@ const Banner = () => {
         <div className="space-y-5">
           {/* Apply conditional classes for h1 based on light/dark mode */}
           <h1
-            className={` text-justify  text text-4xl sm:text-5xl font-semibold  font-serif ${
+            className={`text-4xl sm:text-5xl font-semibold  font-serif ${
               isLightMode ? "text-black font-work-sans" : "text-white"
             }`}
           >
             We are India's only startup kickstarter under one roof solution
           </h1>
           <p
-            className={`hidden lg:block text-justify  " ${
-              isLightMode ? " text-lightText text-xl font-normal  " : " text-lightText font-normal text-md  "
+            className={`hidden lg:block  " ${
+              isLightMode ? " text-lightText text-xl font-normal " : " text-lightText font-normal text-md  "
             }`}
           >
             We proudly stand as the sole Startup Kickstarter in the Indian
@@ -107,7 +107,7 @@ const Banner = () => {
                 >
                   Adiya Business Solution
                 </p>
-                <p className={` text-justify ${isLightMode ? "text-2xl font-medium font-serif ":" text-2xl font-medium font-serif "}`}>
+                <p className={`${isLightMode ? "text-2xl font-medium font-serif ":" text-2xl font-medium font-serif "}`}>
                   As the only Startup Kickstarter in the Indian Diaspora, we
                   take great pride in our status. Thus, don't simply get excited
                   about Shark Tank; we are here to use our experience to drive
@@ -150,7 +150,7 @@ const Banner = () => {
                 >
                   Adiya Business Solution
                 </p>
-                <p className={`text-justify ${isLightMode ? "text-2xl font-medium font-serif  ":" text-2xl font-medium font-serif "}`}>
+                <p className={`${isLightMode ? "text-2xl font-medium font-serif  ":" text-2xl font-medium font-serif "}`}>
                   We proudly stand as the sole Startup Kickstarter in the Indian
                   Diaspora. So, don't just get excited about Shark Tank; we are
                   here to fuel your startup dreams with our expertise. Startups

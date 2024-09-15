@@ -39,7 +39,7 @@ const AboutSection = () => {
           <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 ${isLightMode ? 'text-darkText' : 'text-customBlue'}`}>
             {aboutContent.title}
           </h2>
-          <p className={`mb-6 sm:mb-8 text-justify font-normal text-base sm:text-lg lg:text-xl ${isLightMode ? 'text-darkText' : 'text-darkSubHeading'}`}>
+          <p className={`tracking-normal text-justify mb-6 sm:mb-8zzz font-normal text-base sm:text-lg lg:text-xl ${isLightMode ? 'text-darkText' : 'text-darkSubHeading'}`}>
             {aboutContent.description}
           </p>
           

@@ -17,7 +17,7 @@ const Services = () => {
         isLightMode ? 'bg-white text-black' : ' text-white'
       }`}
     >
-      <section className="space-y-5 text-sm sm:text-base">
+      <section className="space-y-5  text-justify">
         <h1 className={`text-2xl  sm:text-6xl font-semibold ${
           isLightMode ? 'text-black' : 'text-white'
         } text-center xl:text-start`}>
