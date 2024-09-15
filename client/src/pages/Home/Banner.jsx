@@ -53,7 +53,7 @@ const Banner = () => {
           </h1>
           <p
             className={`hidden lg:block  " ${
-              isLightMode ? " text-lightText text-xl font-normal " : " text-lightText font-normal text-md  "
+              isLightMode ? " text-lightText text-xl font-normal text-justify " : " text-lightText font-normal text-md  "
             }`}
           >
             We proudly stand as the sole Startup Kickstarter in the Indian
@@ -96,7 +96,7 @@ const Banner = () => {
               className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
                 accessibility.hideImages
                   ? "bg-none"
-                  : "bg-[url(/night-mobile.png)]"
+                  : "bg-[url(/night-mobile.jpg)]"
               }`}
             >
               <div className="absolute bottom-0 left-0 flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light dark:text-slate-300 text-slate-800 bg-gradient-to-b from-black/0 via-black/25 to-black/50 h-full">

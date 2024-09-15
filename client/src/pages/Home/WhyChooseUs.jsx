@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
             <h2 className={`text-xl font-semibold mb-3 ${isLightMode ? "text-darkText" : "text-customBlue"}`}>
               {card.title}
             </h2>
-            <p className={` ${isLightMode ? "text-darkText text-md font-normal" : "text-lightText text-md font-normal"}`}>
+            <p className={` text-justify ${isLightMode ? "text-darkText text-md font-normal" : "text-lightText text-md font-normal"}`}>
               {card.description}
             </p>
             <div className={`absolute w-48 h-48 rounded-full -top-24 -right-24 transition-all duration-500 group-hover:scale-150

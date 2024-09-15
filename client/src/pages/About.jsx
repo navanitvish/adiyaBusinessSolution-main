@@ -108,8 +108,8 @@ const About = () => {
                   Our Services
                 </h2>
                 <p
-                  className={`mb-4 font-normal text-lg sm:text-xl ${
-                    isLightMode ? "text-gray-500" : "text-gray-300"
+                  className={`mb-4 font-normal text-lg sm:text-xl text-justify ${
+                    isLightMode ? "text-gray-500 text-justify" : "text-gray-300 text-justify"
                   }`}
                 >
                   We offer a comprehensive range of services, including Product
@@ -159,13 +159,13 @@ const About = () => {
                   Our Story
                 </h2>
                 <p
-                  className={`text-lg sm:text-xl font-normal ${
+                  className={`text-lg sm:text-xl font-normal text-justify ${
                     isLightMode ? "text-gray-500" : "text-gray-300"
                   }`}
                 >
                   <span
-                    className={`block mb-2 font-medium ${
-                      isLightMode ? "text-customBlue" : "text-customBlue"
+                    className={`block mb-2  font-medium  ${
+                      isLightMode ? "text-customBlue  " : "text-customBlue "
                     }`}
                   >
                     How it all began
@@ -213,7 +213,7 @@ const About = () => {
               Meet <span className={`${isLightMode ? 'text-customBlue':'text-customBlue'}`}>The</span> Founder
             </h1>
             <p
-              className={`text-xl sm:text-xl  font-normal text-left ${
+              className={`text-xl text-justify sm:text-xl  font-normal text-left ${
                 isLightMode ? "text-black" : "text-white"
               }`}
             >
@@ -230,7 +230,7 @@ const About = () => {
                   isLightMode ? "text-black" : "text-white"
                 }`}
               >
-                Adity Mishra
+                Avit Garg
               </h3>
               <p
                 className={`text-gray-400 ${

@@ -13,8 +13,8 @@ const OfficeLocation = ({ location, address, isOpen, onToggle }) => {
         </button>
       </div>
       {isOpen && (
-        <div className={`p-4 border-t ${isLightMode ? 'border-blue-300' : 'border-gray-700'} text-xl font-normal`}>
-          <p className={`mb-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{address}</p>
+        <div className={`p-4  border-t ${isLightMode ? 'border-blue-300' : 'border-gray-700'} text-xl font-normal`}>
+          <p className={`mb-4 text-justify ${isLightMode ? 'text-black' : 'text-white'}`}>{address}</p>
           <button className={`bg-customBlue text-white px-4 py-2 rounded`}>Contact Us</button>
         </div>
       )}
@@ -29,15 +29,15 @@ const TechSysOffices = () => {
   const offices = [
     {
       location: 'DCB Bank, Andheri Tech Park, Mumbai. India',
-      address: 'Adity Business Solutions, Office1: Level 1, Gate Avenue, Next to DCB Bank, Andheri, Mumbai'
+      address: 'Adiya Business Solutions, Office1: Level 1, Gate Avenue, Next to DCB Bank, Andheri, Mumbai'
     },
     {
       location: 'K.E polytechnic college',
-      address: 'Adity Business Solutions ,Office 2: c-22 paradise garden bakshi talaav sitapur road near K.E polytechnic college lucknow uttar pradesh'
+      address: 'Adiya Business Solutions ,Office 2: c-22 paradise garden bakshi talaav sitapur road near K.E polytechnic college lucknow uttar pradesh'
     },
     {
       location: 'Sanjay nagar, baroda bangalore',
-      address: 'Adity Business Solutions,Office 3: 412, sanjay nagar bansu appartment near bank of baroda bangalore'
+      address: 'Adiya Business Solutions,Office 3: 412, sanjay nagar bansu appartment near bank of baroda bangalore'
     }
   ];
 
