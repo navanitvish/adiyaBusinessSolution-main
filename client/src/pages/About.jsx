@@ -108,8 +108,8 @@ const About = () => {
                   Our Services
                 </h2>
                 <p
-                  className={`mb-4 font-normal text-lg sm:text-xl text-justify ${
-                    isLightMode ? "text-gray-500 text-justify" : "text-gray-300 text-justify"
+                  className={`mb-4 font-normal text-lg sm:text-xl text-justify   ${
+                    isLightMode ? "text-gray-500 " : "text-gray-300 text-justify"
                   }`}
                 >
                   We offer a comprehensive range of services, including Product
@@ -164,7 +164,7 @@ const About = () => {
                   }`}
                 >
                   <span
-                    className={`block mb-2  font-medium  ${
+                    className={`block mb-2 text-lg  font-medium  ${
                       isLightMode ? "text-customBlue  " : "text-customBlue "
                     }`}
                   >
@@ -213,7 +213,7 @@ const About = () => {
               Meet <span className={`${isLightMode ? 'text-customBlue':'text-customBlue'}`}>The</span> Founder
             </h1>
             <p
-              className={`text-xl text-justify sm:text-xl  font-normal text-left ${
+              className={`text-xl text-justify sm:text-xl  font-normal ${
                 isLightMode ? "text-black" : "text-white"
               }`}
             >

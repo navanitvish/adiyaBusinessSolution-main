@@ -24,7 +24,7 @@ const BlogCard = ({ img, image, category, title, date, readTime, excerpt, access
         <div className="font-bold text-lg sm:text-xl mb-2">
           {title.length > 30 ? `${title.substring(0, 30)}...` : title}
         </div>
-        <p className={`mb-4 text-sm sm:text-md font-normal ${isLightMode ? 'text-black' : 'text-gray-300'}`}>
+        <p className={`mb-4 text-justify text-sm sm:text-md font-normal ${isLightMode ? 'text-black' : 'text-gray-300'}`}>
           {excerpt.length > 150 ? `${excerpt.substring(0, 150)}...` : excerpt}
         </p>
         <div className={`flex items-center text-customBlue text-xs sm:text-sm font-normal`}>
@@ -69,7 +69,7 @@ const BlogCardGrid = () => {
             <h2 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 ${isLightMode ? 'text-black' : 'text-white'}`}>
               Innovative <span className="text-customBlue">B</span>usiness <span className="text-customBlue">Solutions</span> for a <span className="text-customBlue">Digital</span> Future
             </h2>
-            <p className={`text-left font-normal text-md sm:text-xl mb-4 ${isLightMode ? 'text-black' : 'text-gray-300'}`}>
+            <p className={` text-justify whitespace-normal font-normal text-md sm:text-xl mb-4 ${isLightMode ? 'text-black' : 'text-gray-300'}`}>
               Check back every week for inspiring articles to help build and expand your digital presence.
             </p>
             <button className={`w-full sm:w-auto hover:bg-customBlueHover border-2 font-normal px-6 py-2 rounded-lg ${isLightMode ? 'bg-customBlue text-lightText hover:text-lightText' : 'bg-customBlue text-gray-900 hover:bg-customBlueHover'}`}>

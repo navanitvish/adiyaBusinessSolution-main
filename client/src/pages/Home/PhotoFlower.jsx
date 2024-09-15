@@ -49,7 +49,7 @@ const PhotoFlower = () => {
           ></div>
         </section>
         <section
-          className={`w-full lg:w-[500px] ${
+          className={`w-10/12 lg:w-[500px] ${
             isLightMode ? "text-black" : "text-white"
           } space-y-5 mb-5 lg:mb-0`}
         >
@@ -67,7 +67,7 @@ const PhotoFlower = () => {
               Service I<span className="text-customBlue">n the Town</span>
             </h1>
             <p
-              className={`text-md lg:text-xl text-left font-normal ${
+              className={`text-md lg:text-xl  font-normal text-justify ${
                 isLightMode ? "text-gray-800" : "text-gray-300"
               }`}
             >
@@ -77,7 +77,7 @@ const PhotoFlower = () => {
               best value + long-term satisfaction and increased sales.
             </p>
             <p
-              className={`text-sm lg:text-xl font-normal text-left ${
+              className={`text-sm lg:text-xl font-normal text-justify ${
                 isLightMode ? "text-gray-800" : "text-gray-300"
               }`}
             >
