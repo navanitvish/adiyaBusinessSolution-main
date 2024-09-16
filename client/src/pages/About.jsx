@@ -62,11 +62,11 @@ const About = () => {
           </div>
         </div>
 
-        <div className="w-full object-cover">
+        <div className="w-full object-cover hidden md:block  lg:block ">
           <img
             src="https://shechain.co/wp-content/uploads/2022/04/shechain.co_photos-1900-x-780-px-faq-1.png"
             alt="Team raising hands in celebration"
-            className="w-full h-48 sm:h-72 md:h-96 object-cover rounded-3xl"
+            className="w-full h-48 sm:h-72 md:h-96 object-cover rounded-3xl "
           />
         </div>
       </div>
@@ -86,7 +86,7 @@ const About = () => {
                 } md:pr-8 mb-6 md:mb-0`}
               >
                 <h1
-                  className={`text-4xl font-semibold sm:text-5xl ${
+                  className={`text-4xl font-semibold sm:text-5xl md:text-4xl ${
                     isLightMode ? "text-black" : "text-white"
                   }`}
                 >

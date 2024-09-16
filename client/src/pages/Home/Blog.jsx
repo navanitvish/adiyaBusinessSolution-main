@@ -25,7 +25,7 @@ const BlogCard = ({ img, image, category, title, date, readTime, excerpt, access
           {title.length > 30 ? `${title.substring(0, 30)}...` : title}
         </div>
         <p className={`mb-4  text-md text-justify tracking-tight sm:text-md font-normal ${isLightMode ? 'text-black' : 'text-gray-300'}`}>
-          {excerpt.length > 150 ? `${excerpt.substring(0, 150)}...` : excerpt}
+          {excerpt.length > 150 ? `${excerpt.substring(0, 160)}...` : excerpt}
         </p>
         <div className={`flex items-center text-customBlue text-xs sm:text-sm font-normal`}>
           <Clock className="w-4 h-4 mr-1" />

@@ -65,7 +65,7 @@ const Layout = () => {
               isOpenRequestProposal ? "mr-0" : "-mr-80 sm:-mr-[500px]"
             }`}
           >
-            <RequestProposal />
+            <RequestProposal /> 
           </div>
         </div>
       </main>
