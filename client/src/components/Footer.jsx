@@ -34,13 +34,22 @@ const Footer = () => {
   const footerSections = [
     {
       title: "Company",
-      items: ["Home", "About us", "What we do"],
+      items: [
+        { name: "Home", link: "/" },
+        { name: "About us", link: "/about" },
+        { name: "What we do", link: "#" },
+      ],
     },
     {
       title: "Learn",
-      items: ["Blog", "FAQs", "Glossary"],
+      items: [
+        { name: "Blog", link: "#" },
+        { name: "FAQs", link: "/faqs" },
+        { name: "Glossary", link: "#" },
+      ],
     },
   ];
+  
 
   return (
     <footer
@@ -125,12 +134,12 @@ const Footer = () => {
                 >
                   {section.items.map((item) => (
                     <li
-                      key={item}
+                      key={item.name}
                       className={`hover:text-${
                         isLightMode ? "blue-500" : "blue-400"
                       } text-md font-medium transition-colors duration-200`}
                     >
-                      <a href="/about">{item}</a>
+                      <a href={item.link}>{item.name}</a>
                     </li>
                   ))}
                 </ul>
@@ -204,22 +213,63 @@ const Footer = () => {
 
           {/* Contact Information */}
           <div className="md:hidden lg:block">
-            <h3 className={`text-xl font-semibold mb-4 ${isLightMode ? 'text-gray-800' : 'text-gray-200'}`}>Connect with us</h3>
+            <h3
+              className={`text-xl font-semibold mb-4 ${
+                isLightMode ? "text-gray-800" : "text-gray-200"
+              }`}
+            >
+              Connect with us
+            </h3>
             <div className="flex flex-col space-y-3 mb-6">
-              <a href="mailto:proposal@adiyabusinesssolution.com" className={`flex items-center space-x-2 hover:text-${isLightMode ? 'white' : 'white'} transition-colors duration-200`}>
+              <a
+                href="mailto:proposal@adiyabusinesssolution.com"
+                className={`flex items-center space-x-2 hover:text-${
+                  isLightMode ? "white" : "white"
+                } transition-colors duration-200`}
+              >
                 <IoIosMail size={18} />
-                <span className={`text-md font-medium ${isLightMode ? 'text-gray-800' : 'text-gray-200'}`}>proposal@adiyabusinesssolution.com</span>
+                <span
+                  className={`text-md font-medium ${
+                    isLightMode ? "text-gray-800" : "text-gray-200"
+                  }`}
+                >
+                  proposal@adiyabusinesssolution.com
+                </span>
               </a>
-              <a href="tel:+919372194890" className={`flex items-center space-x-2 hover:text-${isLightMode ? 'blue-500' : 'blue-400'} transition-colors duration-200`}>
+              <a
+                href="tel:+919372194890"
+                className={`flex items-center space-x-2 hover:text-${
+                  isLightMode ? "blue-500" : "blue-400"
+                } transition-colors duration-200`}
+              >
                 <Phone size={18} />
-                <span className={`text-md font-medium ${isLightMode ? 'text-gray-800' : 'text-gray-200'}`}>+91 93721 94890</span>
+                <span
+                  className={`text-md font-medium ${
+                    isLightMode ? "text-gray-800" : "text-gray-200"
+                  }`}
+                >
+                  +91 93721 94890
+                </span>
               </a>
             </div>
 
             {/* Social Icons */}
             <div className="flex space-x-4 text-md font-medium">
-              {['https://in.linkedin.com/company/adiya-business-solution', 'https://www.facebook.com/adiyabusinesssolution', 'https://x.com/in/couetilc', 'https://www.instagram.com/adiyabusinesssolution?igsh=cmN3YTZ2dTBrcDl4&utm_source=qr '].map((url) => (
-                <a href={url} key={url} className={`text-${isLightMode ? 'gray-400' : 'gray-600'} hover:text-${isLightMode ? 'blue-500' : 'blue-400'} transition-colors duration-200`}>
+              {[
+                "https://in.linkedin.com/company/adiya-business-solution",
+                "https://www.facebook.com/adiyabusinesssolution",
+                "https://x.com/in/couetilc",
+                "https://www.instagram.com/adiyabusinesssolution?igsh=cmN3YTZ2dTBrcDl4&utm_source=qr ",
+              ].map((url) => (
+                <a
+                  href={url}
+                  key={url}
+                  className={`text-${
+                    isLightMode ? "gray-400" : "gray-600"
+                  } hover:text-${
+                    isLightMode ? "blue-500" : "blue-400"
+                  } transition-colors duration-200`}
+                >
                   <SocialIcon url={url} style={{ height: 30, width: 30 }} />
                 </a>
               ))}
