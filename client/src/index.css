@@ -56,7 +56,7 @@ input::-webkit-inner-spin-button {
 /* Light mode styles */
 /* Global Styles */
 body.dark-mode {
-  background-color: #1a202c; /* Dark background */
+  background-color: #171a1f; /* Dark background */
   color: #f0f0f1; /* White text */
 }
 

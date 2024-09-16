@@ -20,7 +20,7 @@ const PhotoFlower = () => {
             : "bg-gray-900"
         }`}>
       <section
-        className={`px-5 w-10/11 mx-auto lg:px-20 py-10 flex flex-col-reverse lg:flex-row items-center justify-center space-x-0 lg:space-x-20 h-auto lg:h-[calc(100vh-56px)] `}
+        className={`px-5 w-10/12 mx-auto lg:px-20 py-10 grid md:grid-cols-2 lg:grid-cols-2 items-center justify-center space-x-0 lg:space-x-20 h-auto lg:h-[calc(100vh-56px)] `}
       >
         <section
           className="grid grid-cols-2 w-fit gap-2.5 lg:gap-5"
@@ -59,7 +59,7 @@ const PhotoFlower = () => {
             data-aos-duration="500"
           >
             <h1
-              className={`text-4xl lg:text-6xl font-semibold ${
+              className={`text-4xl text-left lg:text-6xl font-semibold ${
                 isLightMode ? "text-black" : "text-white"
               }`}
             >

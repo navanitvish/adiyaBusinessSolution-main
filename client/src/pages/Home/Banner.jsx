@@ -29,7 +29,7 @@ const Banner = () => {
 
   return (
     <main
-      className={`relative h-auto lg:h-screen text-justify tracking-wide flex flex-col lg:flex-row ${
+      className={`relative h-auto lg:h-screen  tracking-wide flex flex-col lg:flex-row ${
         isLightMode ? "text-black bg-white" : "dark:text-white bg-gray-900"
       } transition-colors duration-300`}
     >
@@ -45,15 +45,15 @@ const Banner = () => {
         <div className="space-y-5">
           {/* Apply conditional classes for h1 based on light/dark mode */}
           <h1
-            className={`text-4xl sm:text-5xl font-semibold  font-serif ${
+            className={`text-4xl sm:text-5xl font-bold    track  font-serif ${
               isLightMode ? "text-black font-work-sans" : "text-white"
             }`}
           >
-            We are India's only startup kickstarter under one roof solution
+            We are India's only  startup kickstarter under one roof solution .
           </h1>
           <p
-            className={`hidden lg:block  " ${
-              isLightMode ? " text-lightText text-xl font-normal " : " text-lightText font-normal text-md  "
+            className={`hidden lg:block  text-justify tracking-tight  " ${
+              isLightMode ? " text-lightText text-xl font-normal " : " text-lightText font-normal text-xl  "
             }`}
           >
             We proudly stand as the sole Startup Kickstarter in the Indian
@@ -129,8 +129,7 @@ const Banner = () => {
         {isLightMode && (
           <>
             <div className="h-full">
-              <Spline
-                scene="https://prod.spline.design/LA8BMarz0cqDAA2T/scene.splinecode"
+            <Spline scene="https://prod.spline.design/86cy-MVUTdOseoQe/scene.splinecode"
                 className="object-cover object-center h-full hidden lg:block"
               />
             </div>
@@ -139,7 +138,7 @@ const Banner = () => {
               className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
                 accessibility.hideImages
                   ? "bg-none"
-                  : "bg-[url(/day-mobile.jpg)] object-cover" 
+                  : "bg-[url(/day-mobile.jpg)] object-contain" 
               }`}
             >
               <div className="absolute bottom-0 left-0 flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light  bg-gradient-to-b h-full">

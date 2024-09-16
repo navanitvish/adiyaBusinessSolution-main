@@ -29,11 +29,11 @@ const WhyChooseUs = () => {
   const textColor = isLightMode ? "text-gray-800" : "text-gray-100";
 
   return (
-    <main className={`font-montserrat px-5 md:px-20 py-16 ${bgGradient} ${textColor}`}>
+    <main className={`w-10/12 mx-auto font-montserrat px-5 md:px-20 py-16 ${bgGradient} ${textColor}`}>
       {/* <h1 className="text-4xl md:text-6xl font-bold text-center mb-12 ">
         Why Choose Us
       </h1> */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {cards.map((card, index) => (
           <section
             key={index}
@@ -53,7 +53,7 @@ const WhyChooseUs = () => {
             <h2 className={`text-xl font-semibold mb-3 ${isLightMode ? "text-darkText" : "text-customBlue"}`}>
               {card.title}
             </h2>
-            <p className={` text-justify ${isLightMode ? "text-darkText text-md font-normal" : "text-lightText text-md font-normal"}`}>
+            <p className={` text-justify tracking-tight  ${isLightMode ? "text-darkText text-md font-normal" : "text-lightText text-lg font-normal"}`}>
               {card.description}
             </p>
             <div className={`absolute w-48 h-48 rounded-full -top-24 -right-24 transition-all duration-500 group-hover:scale-150

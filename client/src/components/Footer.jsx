@@ -218,7 +218,7 @@ const Footer = () => {
 
             {/* Social Icons */}
             <div className="flex space-x-4 text-md font-medium">
-              {['https://in.linkedin.com/company/adiya-business-solution', 'https://www.facebook.com/adiyabusinesssolution', 'https://x.com/in/couetilc', 'https://instagram.com/in/couetilc'].map((url) => (
+              {['https://in.linkedin.com/company/adiya-business-solution', 'https://www.facebook.com/adiyabusinesssolution', 'https://x.com/in/couetilc', 'https://www.instagram.com/adiyabusinesssolution?igsh=cmN3YTZ2dTBrcDl4&utm_source=qr '].map((url) => (
                 <a href={url} key={url} className={`text-${isLightMode ? 'gray-400' : 'gray-600'} hover:text-${isLightMode ? 'blue-500' : 'blue-400'} transition-colors duration-200`}>
                   <SocialIcon url={url} style={{ height: 30, width: 30 }} />
                 </a>

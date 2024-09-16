@@ -188,7 +188,7 @@ const TestimonialSlider = () => {
                       </h3>
                     </div>
                   </div>
-                  <p className={`mb-4 font-normal text ${isLightMode ? "text-darkText" : "text-lightText"}`}>
+                  <p className={`mb-4 font-normal text-justify tracking-tight ${isLightMode ? "text-darkText" : "text-lightText"}`}>
                     {testimonial.comment.substring(0, 280)}...
                   </p>
                   <div className="flex justify-between items-center mt-auto">
