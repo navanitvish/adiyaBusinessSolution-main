@@ -29,7 +29,7 @@ const WhyChooseUs = () => {
   const textColor = isLightMode ? "text-gray-800" : "text-gray-100";
 
   return (
-    <main className={`w-10/12 mx-auto font-montserrat px-5 md:px-20 py-16 ${bgGradient} ${textColor}`}>
+    <main className={` font-montserrat px-5 md:px-20 py-16 ${bgGradient} ${textColor}`}>
       {/* <h1 className="text-4xl md:text-6xl font-bold text-center mb-12 ">
         Why Choose Us
       </h1> */}
