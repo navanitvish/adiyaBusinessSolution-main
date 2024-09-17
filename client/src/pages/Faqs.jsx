@@ -12,7 +12,7 @@ const Faqs = () => {
       <h1 className={` text-2xl lg:text-6xl p-4 md:text-5xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
         Frequently asked <span className="text-customBlue">questions?</span>
       </h1>
-      <section className={`space-y-2.5 font-ligh flex flex-col w-full t p-4 ${isLightMode ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
+      <section className={`space-y-3.5   flex flex-col w-full  p-4 ${isLightMode ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
         {faqData.map((i, j) => (
           <div
             key={j}
@@ -21,14 +21,14 @@ const Faqs = () => {
             }}
             className={`shadow h border  duration-200 text-base px-3 md:px-5 py-4 rounded-lg cursor-pointer ${
               faq === j
-                ? (isLightMode ? '  bg-indigo-600 ' : 'bg-darkModeButtonHover ')
+                ? (isLightMode ? '   ' : 'bg-darkModeButtonHover ')
                 : (isLightMode ? 'border-gray-300' : 'border-indigo-700')
             }`}
           >
-            <div className="flex items-center justify-between ">
-              <p className="space-x-2.5 flex items-center ">
+            <div className="flex items-center justify-between  ">
+              <p className="space-x-2.5 flex items-center justify-center  ">
                 <span className={`font-normal  ${isLightMode ? 'text-black' : 'text-white'}`}>{j + 1}</span>
-                <span className={`  md:text-lg lg:text-xl font-medium  align-middle p-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
+                <span className={` text-sm  md:text-lg lg:text-xl font-medium    p-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
               </p>
               <div>
                 <BsChevronDown
