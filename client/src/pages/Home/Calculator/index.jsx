@@ -13,14 +13,14 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
   height: 7,
   "& .MuiSlider-track": {
     border: "none",
-    color: theme.isLightMode ? "#5250ff" : "#5250ff",
+    color: theme.isLightMode ? "#5250ff" : "#5350ff",
   },
   "& .MuiSlider-thumb": {
     color: theme.isLightMode ? "#1e3a8a" : "#a3a0ff",
     height: 20,
     width: 20,
     backgroundColor: theme.isLightMode ? "#ffffff" : "#fff",
-    border: `5px solid ${theme.isLightMode ? "#3938c9" : "#3938c9"}`,
+    border: `5px solid ${theme.isLightMode ? "#3938c9" : "#3948c9"}`,
     "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
       boxShadow: "inherit",
     },
@@ -30,7 +30,7 @@ const CustomSlider = styled(Slider)(({ theme }) => ({
   },
 }));
 
-const Calculator = ({ illumination }) => {
+const Calculator = () => {
   const { requestProposalInputs } = useSelector((store) => store.app);
   const { isLightMode } = useTheme(); // Access the current theme state
 
@@ -59,6 +59,7 @@ const Calculator = ({ illumination }) => {
   const handleChange = (param) => (e) => {
     const val = e.target.value;
     setInputs({ ...inputs, [param]: val });
+    setCalcQuotes({ ...calcQuotes, [param]: val }); // Update calcQuotes state
     // Update quotes based on the parameter and value
     // ... (same as your existing logic)
   };
@@ -304,7 +305,7 @@ const Calculator = ({ illumination }) => {
                 onClick={() => setIsShowCalcForm(!isShowCalcForm)}
                 className={`border px-5 py-1.5 text-lg rounded-md ${
                   isLightMode
-                    ? "border-slate-200  hover:bg-customBlueHover"
+                    ? "border-slate-200  hover:bg-customBlue"
                     : "border-slate-200  hover:bg-customBlueHover"
                 }`}
               >
@@ -314,7 +315,7 @@ const Calculator = ({ illumination }) => {
                 type="submit"
                 className={`border px-5 py-1.5 text-lg rounded-md ${
                   isLightMode
-                    ? "border-slate-200 hover:border-blue-400 hover:bg-customBlueHover"
+                    ? "border-slate-200 hover:border-blue-400 hover:bg-customBlue"
                     : "border-slate-200 hover:border-blue-400 hover:bg-customBlueHover"
                 }`}
               >

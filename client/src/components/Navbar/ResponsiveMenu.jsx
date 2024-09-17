@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsChevronDown } from "react-icons/bs";
-import { navData } from "./index";
-
+//import {navData} from "./index";
+import PropTypes from 'prop-types';
 const ResponsiveMenu = ({ isOpenResponsiveMenu, setIsOpenResponsiveMenu }) => {
   const navigate = useNavigate();
   const [isOpenServices, setIsOpenServices] = useState(false);
@@ -159,3 +159,7 @@ const ResponsiveMenu = ({ isOpenResponsiveMenu, setIsOpenResponsiveMenu }) => {
 };
 
 export default ResponsiveMenu;
+ResponsiveMenu.propTypes = {
+  isOpenResponsiveMenu: PropTypes.bool.isRequired,
+  setIsOpenResponsiveMenu: PropTypes.func.isRequired,
+};

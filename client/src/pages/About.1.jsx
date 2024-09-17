@@ -2,9 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsOpenRequestProposal } from "../store/appSlice";
 import Stats from "./Stats";
 import TechSysOffices from "./TechSysOffices ";
-import { useTheme } from "../context/ThemeContext"; // Import useTheme
+import { useTheme } from "../context/ThemeContext";
 import ReactSEO from "../components/ReactSEO";
-const About = () => {
+
+export const About = () => {
   const dispatch = useDispatch();
   const { accessibility } = useSelector((store) => store.app);
   const { isLightMode } = useTheme(); // Access the theme
@@ -250,7 +251,8 @@ const About = () => {
               of our business solutions company drives innovation with bespoke
               CRM systems, cutting-edge website development, and app
               development, empowering businesses to excel in today’s dynamic,
-              competitive market. <span className="font-bold">&quot;</span>             
+              competitive market.
+              <span className="font-bold">&quot;</span>
             </p>
             <div className="mt-4">
               <h3
@@ -283,5 +285,3 @@ const About = () => {
     </div>
   );
 };
-
-export default About;

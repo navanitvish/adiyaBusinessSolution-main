@@ -6,28 +6,29 @@ import ServicesMenu from "./ServicesMenu";
 import ResponsiveMenu from "./ResponsiveMenu";
 import { useTheme } from "../../context/ThemeContext";
 import { BsSun, BsMoonStars } from "react-icons/bs";
-
-export const navData = [
-  {
-    link: "Home",
-    to: "/",
-  },
-  {
-    link: "About",
-    to: "/about",
-  },
-  {
-    link: "Services",
-  },
-  {
-    link: "Faqs",
-    to: "/faqs",
-  },
+import { navData } from "../../configs/navData";
+// export const navData = [
+//   {
+//     link: "Home",
+//     to: "/",
+//   },
+//   {
+//     link: "About",
+//     to: "/about",
+//   },
+//   {
+//     link: "Services",
+//   },
+//   {
+//     link: "Faqs",
+//     to: "/faqs",
+//   },
   // {
   //   link: "Contact",
   //   to: "/contact",
   // },
-];
+
+import PropTypes from 'prop-types';
 
 const Navbar = ({ accessibility }) => {
   const navigate = useNavigate();
@@ -43,7 +44,8 @@ const Navbar = ({ accessibility }) => {
     const handleScroll = () => {
       window.scrollY >= 56 ? setNavBg(true) : setNavBg(false);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -90,7 +92,7 @@ const Navbar = ({ accessibility }) => {
                 isLightMode ? "text-white" : "text-white"
               }`
             : `bg-[#5250ff] lg:bg-transparent shadow lg:shadow-none sticky lg:fixed ${
-                isLightMode ? "text-white" : "text-white"
+                isLightMode ?  "text-white lg:text-black" : "text-white"
               }`
         }`}
       >
@@ -98,7 +100,7 @@ const Navbar = ({ accessibility }) => {
         <section onClick={() => navigate("/")} className="cursor-pointer">
           <h1 className=" font-architects-daughter text-2xl md:text-3xl xl:text-3xl font-semibold">
             <Link to="/">
-              Adiya 
+              Adiya
               
             </Link>
           </h1>
@@ -168,3 +170,6 @@ const Navbar = ({ accessibility }) => {
 };
 
 export default Navbar;
+Navbar.propTypes = {
+  accessibility: PropTypes.object.isRequired, // or PropTypes.bool, PropTypes.string, etc.
+};
