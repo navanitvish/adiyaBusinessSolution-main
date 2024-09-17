@@ -95,15 +95,15 @@ const Banner = () => {
             </div>
 
             <div
-              className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
+              className={`relative w-full h-[calc(70vh)] bg-cover bg-center block lg:hidden ${
                 accessibility.hideImages
                   ? "bg-none"
                   : "bg-[url(/night-mobile.png)]"
               }`}
             >
-              <div className="absolute bottom-0 left-0 md:-top-20 flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light dark:text-slate-300 text-slate-800 bg-gradient-to-b from-black/0 via-black/25 to-black/50 h-full">
+              <div className="absolute bottom-0 left-0 md:-top-20  flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-justify  dark:text-slate-300 text-slate-800 bg-gradient-to-b from-black/0 via-black/25 to-black/50 h-full">
                 <p
-                  className={`font-serif text-4xl md:text-5xl -mb-2.5 ${
+                  className={`font-serif text-xl text-lightText md:text-5xl -mb-2.5 ${
                     isLightMode ? "" : ""
                   }`}
                 >
@@ -112,8 +112,8 @@ const Banner = () => {
                 <p
                   className={`${
                     isLightMode
-                      ? "text-md font-normal md:text-2xl text-white "
-                      : " text-md font-normal md:text-2xl "
+                      ? "text-[12px]   font-normal md:text-2xl    "
+                      : " text-[12px]  font-normal md:text-2xl  "
                   }`}
                 >
                   Looking for Top-Notch WEBSITE DESIGN and Development Services?
@@ -160,12 +160,12 @@ const Banner = () => {
               className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
                 accessibility.hideImages
                   ? "bg-none"
-                  : "bg-[url(/day-mobile.png)] object-contain"
+                  : "bg-[url(/day-mobile.png)] object-contain h-[70vh]"
               }`}
             >
-              <div className="absolute bottom-0 left-0 md:-top-20  flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light  bg-gradient-to-b h-full">
+              <div className="absolute bottom-0 left-0 md:-top-20    flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5  text-justify   h-full">
                 <p
-                  className={`font-serif text-2xl md:text-5xl font-bold -mb-3.5 ${
+                  className={`font-serif text-xl md:text-5xl font-bold -mb-2.5 ${
                     isLightMode ? "text-white" : "text-customBlue"
                   }`}
                 >
@@ -174,8 +174,8 @@ const Banner = () => {
                 <p
                   className={`${
                     isLightMode
-                      ? "text-sm font-medium  md:text-2xl md:text-justify "
-                      : " text-sm font-medium  md:text-2xl md:text-justify "
+                      ? " text-[12px]  font-normal  md:text-2xl md:text-justify  "
+                      : " text-[12px] font-normal  md:text-2xl md:text-justify  "
                   }`}
                 >
                   Looking for Top-Notch WEBSITE DESIGN and Development Services?

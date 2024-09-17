@@ -30,7 +30,7 @@ const AboutSection = () => {
   }, []);
 
   return (
-    <div className={`container mx-auto w-10/12 px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 ${isLightMode ? 'text-lightText' : 'text-darkModeText'}`}>
+    <div className={`container mx-auto w-10/12 px-4 sm:px-6 lg:px-8 py-16 sm:py-16 lg:py-20 ${isLightMode ? 'text-lightText' : 'text-darkModeText'}`}>
       <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
         <div className="w-full lg:w-1/2 lg:pr-8" data-aos="fade-right">
           <h3 className={`text-orange-500 font-semibold mb-2 text-lg sm:text-xl ${isLightMode ? 'text-black' : 'text-darkHeading'}`}>
