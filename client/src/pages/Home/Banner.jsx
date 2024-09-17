@@ -165,7 +165,7 @@ const Banner = () => {
             >
               <div className="absolute bottom-0 left-0 md:-top-20  flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-sm font-light  bg-gradient-to-b h-full">
                 <p
-                  className={`font-serif text-4xl md:text-5xl font-bold -mb-2.5 ${
+                  className={`font-serif text-2xl md:text-5xl font-bold -mb-3.5 ${
                     isLightMode ? "text-white" : "text-customBlue"
                   }`}
                 >
