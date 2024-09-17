@@ -9,7 +9,7 @@ const Faqs = () => {
 
   return (
     <section className={`md:mx-20 mt-7  mb-10  mx-auto ${isLightMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
-      <h1 className={`text-6xl p-4 md:text-6xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
+      <h1 className={` text-2xl lg:text-6xl p-4 md:text-5xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
         Frequently asked <span className="text-customBlue">questions?</span>
       </h1>
       <section className={`space-y-2.5 font-ligh flex flex-col w-full t p-4 ${isLightMode ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
@@ -28,7 +28,7 @@ const Faqs = () => {
             <div className="flex items-center justify-between ">
               <p className="space-x-2.5 flex items-center ">
                 <span className={`font-normal  ${isLightMode ? 'text-black' : 'text-white'}`}>{j + 1}</span>
-                <span className={`text-xl font-semibold  align-middle p-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
+                <span className={`  md:text-lg lg:text-xl font-medium  align-middle p-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
               </p>
               <div>
                 <BsChevronDown
@@ -43,7 +43,7 @@ const Faqs = () => {
                 faq === j ? "active opacity-100" : "inactive opacity-0"
               }`}
             >
-              <div className={`overflow-hidden text-xl  text-left  tracking-tighter font-normal ${isLightMode ? '' : ''}`}>
+              <div className={`overflow-hidden text-sm lg:text-xl  text-justify  tracking-tighter font-normal ${isLightMode ? '' : ''}`}>
                 {i.ans}
               </div>
             </div>
