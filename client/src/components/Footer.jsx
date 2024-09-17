@@ -75,7 +75,7 @@ const Footer = () => {
           {/* Company Info Section */}
           <div className="lg:col-span-2 space-y-6">
             <h2
-              className={`text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600`}
+              className={` text-sm md:text-2xl lg:text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600`}
             >
               ADIYA Business Solution
             </h2>
@@ -83,7 +83,7 @@ const Footer = () => {
               {["Office 1", "Office 2", "Office 3"].map((office, index) => (
                 <address
                   key={office}
-                  className={`not-italic text-md font-medium flex items-start space-x-2 ${
+                  className={`not-italic text-sm lg:text-md font-normal lg:font-medium flex items-start space-x-2 ${
                     isLightMode ? "text-gray-800" : "text-gray-200"
                   }`}
                 >
@@ -111,7 +111,7 @@ const Footer = () => {
             {footerSections.map((section) => (
               <div key={section.title}>
                 <h3
-                  className={`text-xl font-semibold mb-4 flex justify-between items-center cursor-pointer lg:cursor-default ${
+                  className={`text-sm md:text-lg lg:text-xl font-semibold mb-4 flex justify-between items-center cursor-pointer lg:cursor-default ${
                     isLightMode ? "text-gray-800" : "text-gray-200"
                   }`}
                   onClick={() => toggleSection(section.title)}
@@ -137,7 +137,7 @@ const Footer = () => {
                       key={item.name}
                       className={`hover:text-${
                         isLightMode ? "blue-500" : "blue-400"
-                      } text-md font-medium transition-colors duration-200`}
+                      } text-sm lg:text-md font-medium transition-colors duration-200`}
                     >
                       <a href={item.link}>{item.name}</a>
                     </li>
@@ -163,7 +163,7 @@ const Footer = () => {
                 >
                   <IoIosMail size={18} />
                   <span
-                    className={`text-md font-medium ${
+                    className={`  md:text-sm  lg:text-md font-medium ${
                       isLightMode ? "text-gray-800" : "text-gray-200"
                     }`}
                   >
@@ -178,7 +178,7 @@ const Footer = () => {
                 >
                   <Phone size={18} />
                   <span
-                    className={`text-md font-medium ${
+                    className={` md:text-sm lg:text-md font-medium ${
                       isLightMode ? "text-gray-800" : "text-gray-200"
                     }`}
                   >
@@ -214,7 +214,7 @@ const Footer = () => {
           {/* Contact Information */}
           <div className="md:hidden lg:block">
             <h3
-              className={`text-xl font-semibold mb-4 ${
+              className={`text-sm lg:text-xl font-semibold mb-4 ${
                 isLightMode ? "text-gray-800" : "text-gray-200"
               }`}
             >
@@ -229,7 +229,7 @@ const Footer = () => {
               >
                 <IoIosMail size={18} />
                 <span
-                  className={`text-md font-medium ${
+                  className={` text-sm lg:text-md font-medium ${
                     isLightMode ? "text-gray-800" : "text-gray-200"
                   }`}
                 >
@@ -244,7 +244,7 @@ const Footer = () => {
               >
                 <Phone size={18} />
                 <span
-                  className={`text-md font-medium ${
+                  className={ ` text-sm lg:text-md font-medium ${
                     isLightMode ? "text-gray-800" : "text-gray-200"
                   }`}
                 >
@@ -254,7 +254,7 @@ const Footer = () => {
             </div>
 
             {/* Social Icons */}
-            <div className="flex space-x-4 text-md font-medium">
+            <div className="flex space-x-4 text-sm lg:text-md font-medium">
               {[
                 "https://in.linkedin.com/company/adiya-business-solution",
                 "https://www.facebook.com/adiyabusinesssolution",
@@ -283,7 +283,7 @@ const Footer = () => {
             isLightMode ? "gray-300" : "gray-700"
           } my-8`}
         ></div>
-        <div className="flex flex-col lg:flex-row justify-between items-center text-xl font-normal">
+        <div className="flex flex-col lg:flex-row justify-between items-center text-sm  lg:text-xl font-normal">
           <p
             className={`mb-4 lg:mb-0 ${
               isLightMode ? "text-gray-800" : "text-gray-200"
@@ -328,7 +328,7 @@ const Footer = () => {
         </div>
 
         <p
-          className={`text-sm font-normal text-left mt-8  lg:text-left ${
+          className={` text-sm lg:text-md font-normal text-justify  mt-4 md:text-center  lg:text-center ${
             isLightMode ? "text-gray-800" : "text-gray-200"
           }`}
         >

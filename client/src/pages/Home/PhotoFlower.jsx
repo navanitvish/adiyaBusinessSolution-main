@@ -20,7 +20,7 @@ const PhotoFlower = () => {
             : "bg-gray-900"
         }`}>
       <section
-        className={`px-5 w-10/12 mx-auto lg:px-20 py-10 flex  flex-row-reverse gap-4 md:flex-row flex-col items-center justify-center space-x-0 lg:space-x-20 h-auto lg:h-[calc(100vh-56px)] `}
+        className={`px-5 w-10/12 mx-auto lg:px-20 py-10 flex  flex-row-reverse gap-4 md:gap-16 lg:gap-1  md:flex-row  items-center justify-center space-x-0 lg:space-x-20 h-auto lg:h-[calc(100vh-56px)] `}
       >
         <section
           className="grid grid-cols-2 w-fit gap-2.5 lg:gap-5"
