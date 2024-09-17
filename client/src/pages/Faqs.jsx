@@ -8,33 +8,33 @@ const Faqs = () => {
   const { isLightMode } = useTheme(); // Use isLightMode instead of theme
 
   return (
-    <section className={`md:mx-20 mt-7 mb-10  mx-auto ${isLightMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
-      <h1 className={`text-6xl md:text-6xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
+    <section className={`md:mx-20 mt-7  mb-10  mx-auto ${isLightMode ? 'bg-white text-black' : 'bg-gray-900 text-white'}`}>
+      <h1 className={`text-6xl p-4 md:text-6xl font-semibold mb-3 ${isLightMode ? 'text-black' : 'text-white'}`}>
         Frequently asked <span className="text-customBlue">questions?</span>
       </h1>
-      <section className={`space-y-2.5 font-light p-8 ${isLightMode ? 'bg-gray-100 border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
+      <section className={`space-y-2.5 font-ligh flex flex-col w-full t p-4 ${isLightMode ? 'bg-gradient-to-br from-blue-50 to-purple-50 border-gray-300' : 'bg-gray-800 border-gray-700'}`}>
         {faqData.map((i, j) => (
           <div
             key={j}
             onClick={() => {
               faq === j ? setFaq(null) : setFaq(j);
             }}
-            className={`shadow h border duration-200 text-base px-3 md:px-5 py-6 rounded-lg cursor-pointer ${
+            className={`shadow h border  duration-200 text-base px-3 md:px-5 py-4 rounded-lg cursor-pointer ${
               faq === j
-                ? (isLightMode ? 'bg-customBlueHover' : 'bg-darkModeButtonHover')
-                : (isLightMode ? 'border-gray-300' : 'border-gray-700')
+                ? (isLightMode ? '  bg-indigo-600 ' : 'bg-darkModeButtonHover ')
+                : (isLightMode ? 'border-gray-300' : 'border-indigo-700')
             }`}
           >
-            <div className="flex items-center justify-between">
-              <p className="space-x-2.5 flex items-center">
-                <span className={`font-normal ${isLightMode ? 'text-black' : 'text-white'}`}>{j + 1}</span>
-                <span className={`text-xl font-semibold ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
+            <div className="flex items-center justify-between ">
+              <p className="space-x-2.5 flex items-center ">
+                <span className={`font-normal  ${isLightMode ? 'text-black' : 'text-white'}`}>{j + 1}</span>
+                <span className={`text-xl font-semibold  align-middle p-4 ${isLightMode ? 'text-black' : 'text-white'}`}>{i.que}</span>
               </p>
               <div>
                 <BsChevronDown
                   className={`duration-200 ${
                     faq === j ? "-rotate-180" : "rotate-0"
-                  } ${isLightMode ? 'text-lightText' : 'text-lightText'}`}
+                  } ${isLightMode ? 'text-black' : 'text-indigo-500'}`}
                 />
               </div>
             </div>
@@ -43,7 +43,7 @@ const Faqs = () => {
                 faq === j ? "active opacity-100" : "inactive opacity-0"
               }`}
             >
-              <div className={`overflow-hidden text-xl font-normal ${isLightMode ? 'text-lightText' : 'text-white'}`}>
+              <div className={`overflow-hidden text-xl  text-left  tracking-tighter font-normal ${isLightMode ? '' : ''}`}>
                 {i.ans}
               </div>
             </div>
