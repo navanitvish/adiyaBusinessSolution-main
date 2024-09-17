@@ -151,6 +151,7 @@ const Banner = () => {
             <div className="h-full">
               <Spline
                 scene="https://prod.spline.design/86cy-MVUTdOseoQe/scene.splinecode"
+                loading="eager"
                 className="object-cover object-center h-full hidden lg:block"
               />
             </div>
@@ -173,8 +174,8 @@ const Banner = () => {
                 <p
                   className={`${
                     isLightMode
-                      ? "text-md font-medium  md:text-2xl md:text-justify "
-                      : " text-md font-medium  md:text-2xl md:text-justify "
+                      ? "text-sm font-medium  md:text-2xl md:text-justify "
+                      : " text-sm font-medium  md:text-2xl md:text-justify "
                   }`}
                 >
                   Looking for Top-Notch WEBSITE DESIGN and Development Services?
