@@ -90,15 +90,15 @@ const Navbar = ({ accessibility }) => {
                 isLightMode ? "text-white" : "text-white"
               }`
             : `bg-[#5250ff] lg:bg-transparent shadow lg:shadow-none sticky lg:fixed ${
-                isLightMode ? "text-black" : "text-white"
+                isLightMode ? "text-white" : "text-white"
               }`
         }`}
       >
         {/* Logo Section */}
         <section onClick={() => navigate("/")} className="cursor-pointer">
-          <h1 className=" text-2xl md:text-3xl xl:text-3xl font-semibold">
+          <h1 className=" font-architects-daughter text-2xl md:text-3xl xl:text-3xl font-semibold">
             <Link to="/">
-              ADIYA 
+              Adiya 
               
             </Link>
           </h1>

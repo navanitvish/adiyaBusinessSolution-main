@@ -137,7 +137,7 @@ const Banner = () => {
                   onClick={() => dispatch(setIsOpenRequestProposal(true))}
                   className={`border ${
                     isLightMode ? "border-black " : "border-white bg-customBlue"
-                  } px-5 py-2.5 rounded-md text-lg hover:bg-customBlue hover:text-white duration-200 w-fit`}
+                  } px-5 py-2.5 rounded-md text-md font-normal text-lightText hover:bg-customBlue hover:text-white duration-200 w-fit`}
                 >
                   Get my custom quote
                 </button>
@@ -199,9 +199,9 @@ const Banner = () => {
                   onClick={() => dispatch(setIsOpenRequestProposal(true))}
                   className={`border ${
                     isLightMode
-                      ? " text-blue-50 font-normal text-xl bg-customBlue"
+                      ? " text-blue-50 font-normal  bg-customBlue"
                       : "border-white bg-customBlue"
-                  } px-5 py-2.5 rounded-md text-lg hover:bg-customBlueHover hover:text-white duration-200 w-fit`}
+                  } px-5 py-2.5 rounded-md text-md hover:bg-customBlueHover hover:text-white duration-200 w-fit`}
                 >
                   Get my custom quote
                 </button>
