@@ -155,7 +155,7 @@ const Navbar = ({ accessibility }) => {
           
           <div className="flex items-center gap-4">
             <ThemeToggle />
-            <CTAButton />
+            {/* <CTAButton /> */}
           </div>
         </section>
 
