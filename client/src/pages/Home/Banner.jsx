@@ -1,23 +1,30 @@
 import { useRef, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setIsOpenRequestProposal } from "../../store/appSlice";
-//import { BsSun, BsMoonStars } from "react-icons/bs";
 import { RxSpeakerLoud, RxSpeakerOff } from "react-icons/rx";
 import { useTheme } from "../../context/ThemeContext";
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  Sparkles, 
+  TrendingUp, 
+  Users, 
+  Rocket,
+  Award,
+  Zap,
+  Target,
+  Globe
+} from "lucide-react";
 
-import Spline from "@splinetool/react-spline";
 const Banner = () => {
   const audioRef = useRef(null);
   const dispatch = useDispatch();
   const { accessibility } = useSelector((store) => store.app);
   const [sound, setSound] = useState(false);
 
-  // Get theme state from ThemeContext
   const { isLightMode } = useTheme();
-
-  // State for typewriter effect
-
-  // Infinite Typewriter Effect
 
   useEffect(() => {
     if (sound) {
@@ -27,219 +34,404 @@ const Banner = () => {
     }
   }, [sound]);
 
+  const stats = [
+    { value: "134+", label: "Successful Launches", icon: Rocket },
+    { value: "9+", label: "Years Leading", icon: Award },
+    { value: "98%", label: "Client Retention", icon: Target },
+  ];
+
+  const features = [
+    { 
+      icon: Zap, 
+      label: 'Rapid Deployment', 
+      color: 'from-yellow-500 to-orange-500',
+      description: 'Launch in weeks, not months'
+    },
+    { 
+      icon: TrendingUp, 
+      label: '10x Growth Strategy', 
+      color: 'from-green-500 to-emerald-500',
+      description: 'Proven scaling frameworks'
+    },
+    { 
+      icon: Users, 
+      label: 'Expert Network', 
+      color: 'from-blue-500 to-cyan-500',
+      description: '50+ industry specialists'
+    },
+    { 
+      icon: Globe, 
+      label: 'Global Reach', 
+      color: 'from-purple-500 to-pink-500',
+      description: 'International market access'
+    }
+  ];
+
   return (
-    <main
-      className={`relative h-auto lg:h-screen  tracking-wide flex flex-col lg:flex-row ${
-        isLightMode ? " bg-white" : "dark:text-white bg-gray-900"
-      } transition-colors duration-300`}
-    >
-      <section
-        className={`w-auto lg:w-[40%] bg-cover bg-center grid place-items-center px-5 sm:px-10 xl:px-20 h-[calc(35vh-56px)] lg:h-auto ${
-          accessibility.hideImages
-            ? "bg-none"
-            : isLightMode
-            ? "bg-[url('/stacked-peaks-haikei.svg')]"
-            : "bg-[url('/stacked-peaks-haikei.svg')]"
-        }`}
-      >
-        <div className="space-y-5">
-          {/* Apply conditional classes for h1 based on light/dark mode */}
-          <h1
-            className={`text-4xl sm:text-5xl       ${
-              isLightMode ? "text-black  font-serif" : "text-white font-serif"
-            }`}
+    <main className={`relative min-h-screen flex items-center overflow-hidden ${
+      isLightMode 
+        ? "bg-gradient-to-br from-slate-50 via-white to-blue-50" 
+        : "bg-gradient-to-br from-gray-950 via-slate-950 to-blue-950"
+    }`}>
+      
+      {/* Animated Background Grid */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className={`absolute inset-0 ${isLightMode ? 'opacity-[0.03]' : 'opacity-[0.05]'}`} 
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, ${isLightMode ? '#3b82f6' : '#60a5fa'} 1px, transparent 0)`,
+            backgroundSize: '40px 40px'
+          }} 
+        />
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-24 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 lg:gap-20 items-center">
+          
+          {/* Content Section */}
+          <motion.section 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="space-y-10 order-2 lg:order-1"
           >
-            We are India's only startup kickstarter under one roof solution .
-          </h1>
-          <p
-            className={`hidden lg:block  text-justify tracking-tight  " ${
-              isLightMode
-                ? " text-lightText text-xl font-normal "
-                : " text-lightText font-normal text-xl  "
-            }`}
+            {/* Premium Badge */}
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-pink-500/10 border-2 border-blue-500/20 backdrop-blur-sm"
+            >
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-gradient-to-r from-blue-400 to-purple-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-gradient-to-r from-blue-500 to-purple-500"></span>
+              </span>
+              <Sparkles className={`w-5 h-5 ${isLightMode ? 'text-blue-600' : 'text-blue-400'}`} />
+              <span className={`text-base font-bold ${
+                isLightMode ? 'bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent' : 'text-gray-100'
+              }`}>
+                India's Premier Startup Accelerator Platform
+              </span>
+            </motion.div>
+
+            {/* Main Heading */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+            >
+              <motion.h1 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] ${
+                isLightMode 
+                  ? 'bg-gradient-to-r from-gray-900 via-blue-900 to-purple-900 bg-clip-text text-transparent' 
+                  : 'bg-gradient-to-r from-white via-blue-100 to-purple-100 bg-clip-text text-transparent'
+              }`}
+            >
+              Transform Vision Into Market Reality
+            </motion.h1>
+
+            </motion.div>
+
+            {/* Description */}
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className={`text-xl sm:text-2xl leading-relaxed max-w-2xl ${
+                isLightMode ? 'text-gray-700' : 'text-gray-300'
+              }`}
+            >
+              We're not just a service provider—we're your dedicated growth partner. From zero to market leader, 
+              we provide the complete tech infrastructure, strategic guidance, and execution power to turn your startup vision into a thriving enterprise.
+            </motion.p>
+
+            {/* Stats Bar */}
+            
+            {/* CTA Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="flex flex-wrap gap-5 pt-2"
+            >
+              <motion.button
+                onClick={() => dispatch(setIsOpenRequestProposal(true))}
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="group relative px-10 py-5 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 hover:from-blue-500 hover:via-purple-500 hover:to-pink-500 transition-all duration-300 shadow-2xl hover:shadow-purple-500/50 overflow-hidden"
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  Request proposal
+                  <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
+              </motion.button>
+              
+              <Link to="/about">
+                <motion.button
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`group px-10 py-5 rounded-2xl font-bold text-lg border-2 transition-all duration-300 backdrop-blur-sm ${
+                    isLightMode 
+                      ? 'border-gray-300 text-gray-800 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600' 
+                      : 'border-gray-600 text-gray-200 hover:border-blue-400 hover:bg-gray-800/50 hover:text-blue-400'
+                  }`}
+                >
+                  <span className="flex items-center gap-2">
+                    Learn More About Us
+                    <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </motion.button>
+              </Link>
+            </motion.div>
+
+            {/* Social Proof */}
+            
+          </motion.section>
+
+          {/* Visual Section */}
+          <motion.section 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="order-1 lg:order-2 relative"
           >
-            We proudly stand as the sole Startup Kickstarter in the Indian
-            Diaspora. So, don't just get excited about Shark Tank; we are here
-            to fuel your startup dreams with our expertise. Startups are like
-            babies, cherished by their founders with all their hearts, but even
-            they don't always know what to do with them—that's where we come
-            into the picture.
-          </p>
-          <button
-            onClick={() => dispatch(setIsOpenRequestProposal(true))}
-            className={`border ${
-              isLightMode ? "border-black" : "border-white"
-            } px-5 py-2.5 rounded-md text-xl font-normal text-buttonText hover:bg-customBlueHover bg-customBlue hover:text-white duration-200 hidden lg:block`}
-          >
-            Get my custom quote
-          </button>
+            <div className="relative h-[400px] lg:h-[500px]">
+              {/* Main Image with 3D Effect */}
+              <motion.div
+                whileHover={{ y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="relative h-full rounded-3xl overflow-hidden shadow-2xl"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-blue-600/30 via-purple-600/20 to-pink-600/30 z-10" />
+                {/* <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=2070&auto=format&fit=crop"
+                  alt="Professional startup team collaborating on innovative solutions"
+                  className="w-full h-full object-cover"
+                /> */}
+
+                {/* video */}
+              <video
+                  src="https://cdn.dribbble.com/userupload/45884250/file/55e3203725f7f9400ef35e5fcdb90972.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover"
+                  aria-label="Professional startup team collaborating on innovative solutions"
+                />
+                
+                {/* Floating Feature Cards */}
+                <div className="absolute inset-0 z-20 p-8">
+                  {/* Top Left - Success Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -20, y: -20 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ delay: 1 }}
+                    whileHover={{ scale: 1.05 }}
+                    className={`absolute top-8 left-8 px-5 py-3 rounded-2xl backdrop-blur-xl border-2 shadow-2xl ${
+                      isLightMode
+                        ? 'bg-white/95 border-white/50'
+                        : 'bg-gray-900/95 border-gray-700/50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-gradient-to-r from-green-500 to-emerald-500">
+                        <CheckCircle2 className="w-5 h-5 text-white" />
+                      </div>
+                      <div>
+                        <div className={`text-xs font-semibold uppercase tracking-wide ${
+                          isLightMode ? 'text-gray-600' : 'text-gray-400'
+                        }`}>
+                          Success Rate
+                        </div>
+                        <div className={`text-xl font-black ${
+                          isLightMode ? 'text-gray-900' : 'text-white'
+                        }`}>
+                          98% Retention
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+
+                  {/* Top Right - Award Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 20, y: -20 }}
+                    animate={{ opacity: 1, x: 0, y: 0 }}
+                    transition={{ delay: 1.2 }}
+                    whileHover={{ scale: 1.05 }}
+                    className={`absolute top-8 right-8 px-5 py-3 rounded-2xl backdrop-blur-xl border-2 shadow-2xl ${
+                      isLightMode
+                        ? 'bg-white/95 border-white/50'
+                        : 'bg-gray-900/95 border-gray-700/50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <div className="p-2 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500">
+                        <Award className="w-5 h-5 text-white" />
+                      </div>
+                      <span className={`text-sm font-black ${
+                        isLightMode ? 'text-gray-900' : 'text-white'
+                      }`}>
+                        Industry Leader
+                      </span>
+                    </div>
+                  </motion.div>
+
+                  {/* Bottom - Features Grid */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 1.4 }}
+                    className="absolute bottom-8 left-8 right-8"
+                  >
+                    <div className={`p-6 rounded-2xl backdrop-blur-xl border-2 shadow-2xl ${
+                      isLightMode
+                        ? 'bg-white/95 border-white/50'
+                        : 'bg-gray-900/95 border-gray-700/50'
+                    }`}>
+                      <div className="grid grid-cols-2 gap-4">
+                        {features.map((feature, i) => {
+                          const Icon = feature.icon;
+                          return (
+                            <motion.div
+                              key={i}
+                              whileHover={{ scale: 1.05 }}
+                              className="flex items-start gap-3"
+                            >
+                              <div className={`p-2 rounded-lg bg-gradient-to-r ${feature.color} flex-shrink-0`}>
+                                <Icon className="w-4 h-4 text-white" />
+                              </div>
+                              <div>
+                                <div className={`text-sm font-bold mb-0.5 ${
+                                  isLightMode ? 'text-gray-900' : 'text-white'
+                                }`}>
+                                  {feature.label}
+                                </div>
+                                <div className={`text-xs ${
+                                  isLightMode ? 'text-gray-600' : 'text-gray-400'
+                                }`}>
+                                  {feature.description}
+                                </div>
+                              </div>
+                            </motion.div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+
+              {/* Decorative Gradient Orbs */}
+              <div className="absolute inset-0 pointer-events-none -z-10">
+                <motion.div
+                  animate={{
+                    scale: [1, 1.2, 1],
+                    opacity: [0.3, 0.5, 0.3],
+                  }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
+                  className={`absolute -top-24 -right-24 w-96 h-96 rounded-full blur-3xl ${
+                    isLightMode ? 'bg-blue-400' : 'bg-blue-600'
+                  }`}
+                />
+                <motion.div
+                  animate={{
+                    scale: [1, 1.3, 1],
+                    opacity: [0.2, 0.4, 0.2],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 1
+                  }}
+                  className={`absolute -bottom-24 -left-24 w-96 h-96 rounded-full blur-3xl ${
+                    isLightMode ? 'bg-purple-400' : 'bg-purple-600'
+                  }`}
+                />
+              </div>
+            </div>
+          </motion.section>
         </div>
-      </section>
+      </div>
 
-      <section className="w-auto lg:w-[70%]">
-        {!isLightMode && (
-          <>
-            <div className="h-full">
-              {/* Video Element */}
-              {/* <video
-                autoPlay
-                loop
-                playsInline
-                className="object-cover object-center w-full h-full hidden lg:block"
-                src="https://cdn.dribbble.com/userupload/5582973/file/original-d10bc667d64989b2572d660a236c1f18.mp4"
-              ></video> */}
-              <Spline
-                scene="https://prod.spline.design/OCqLxoD9ezUz6Xsn/scene.splinecode"
-                className="object-cover object-center w-full h-full hidden lg:block"
-              />
-            </div>
-
-            <div
-              className={`relative w-full h-[calc(70vh)] bg-cover bg-center block lg:hidden ${
-                accessibility.hideImages
-                  ? "bg-none"
-                  : "bg-[url(/night-mobile.png)]"
-              }`}
-            >
-              <div className="absolute bottom-0 left-0 md:-top-20  flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5 text-justify  dark:text-slate-300 text-slate-800 bg-gradient-to-b from-black/0 via-black/25 to-black/50 h-full">
-                <p
-                  className={`font-serif text-xl text-lightText md:text-5xl -mb-2.5 ${
-                    isLightMode ? "" : ""
-                  }`}
-                >
-                  Adiya Business Solution
-                </p>
-                <p
-                  className={`${
-                    isLightMode
-                      ? "text-[12px]   font-normal md:text-2xl    "
-                      : " text-[12px]  font-normal md:text-2xl  "
-                  }`}
-                >
-                  Looking for Top-Notch WEBSITE DESIGN and Development Services?
-                  Our Premier WEBSITE AGENCY Specializes in Cutting-Edge WEB
-                  DESIGN, Dynamic Ecommerce Websites, and Innovative Application
-                  Development, Including Expert MOBILE APPLICATION DEVELOPMENT
-                  and Stunning App Design. Elevate Your Online Presence with Our
-                  Exceptional ECOMMERCE STORES and Bespoke BEST WEBSITE DESIGN
-                  Services Crafted Just for You. As Leaders in the Industry, Our
-                  WEBSITE DEVELOPMENT Company Excels in Backend and Frontend
-                  Development, Delivering the Ultimate in Website Solutions.
-                  Entrust Your Project to Our Skilled MOBILE APP DEVELOPERS for
-                  the Best in App Development Excellence. Seeking Affordable
-                  Solutions? We Offer the Cheapest Website and App Development
-                  Options Without Sacrificing Quality. Conveniently Located as
-                  Your Local WEBSITE DEVELOPER Company, We're Here to Turn Your
-                  Vision into a Captivating Reality. Get in Touch Today to Begin
-                  Your Digital Journey!
-                </p>
-                <button
-                  onClick={() => dispatch(setIsOpenRequestProposal(true))}
-                  className={`border ${
-                    isLightMode ? "border-black " : "border-white bg-customBlue"
-                  } px-5 py-2.5 rounded-md text-md font-normal text-lightText hover:bg-customBlue hover:text-white duration-200 w-fit`}
-                >
-                  Get my custom quote
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-
-        {isLightMode  && (
-          <>
-            <div className="h-full">
-              <Spline
-                scene="https://prod.spline.design/86cy-MVUTdOseoQe/scene.splinecode"
-                loading="eager"
-                className="object-cover object-center h-full hidden lg:block"
-              />
-            </div>
-
-            <div
-              className={`relative w-full h-[calc(65vh)] bg-cover bg-center block lg:hidden ${
-                accessibility.hideImages
-                  ? "bg-none"
-                  : "bg-[url(/day-mobile.png)] object-contain h-[70vh]"
-              }`}
-            >
-              <div className="absolute bottom-0 left-0 md:-top-20    flex flex-col justify-end px-5 sm:px-20 pb-5 space-y-5  text-justify   h-full">
-                <p
-                  className={`font-serif text-xl md:text-5xl font-bold -mb-2.5 ${
-                    isLightMode ? "text-white" : "text-customBlue"
-                  }`}
-                >
-                  Adiya Business Solution
-                </p>
-                <p
-                  className={`${
-                    isLightMode
-                      ? " text-[12px]  font-normal  md:text-2xl md:text-justify  "
-                      : " text-[12px] font-normal  md:text-2xl md:text-justify  "
-                  }`}
-                >
-                  Looking for Top-Notch WEBSITE DESIGN and Development Services?
-                  Our Premier WEBSITE AGENCY Specializes in Cutting-Edge WEB
-                  DESIGN, Dynamic Ecommerce Websites, and Innovative Application
-                  Development, Including Expert MOBILE APPLICATION DEVELOPMENT
-                  and Stunning App Design. Elevate Your Online Presence with Our
-                  Exceptional ECOMMERCE STORES and Bespoke BEST WEBSITE DESIGN
-                  Services Crafted Just for You. As Leaders in the Industry, Our
-                  WEBSITE DEVELOPMENT Company Excels in Backend and Frontend
-                  Development, Delivering the Ultimate in Website Solutions.
-                  Entrust Your Project to Our Skilled MOBILE APP DEVELOPERS for
-                  the Best in App Development Excellence. Seeking Affordable
-                  Solutions? We Offer the Cheapest Website and App Development
-                  Options Without Sacrificing Quality. Conveniently Located as
-                  Your Local WEBSITE DEVELOPER Company, We're Here to Turn Your
-                  Vision into a Captivating Reality. Get in Touch Today to Begin
-                  Your Digital Journey!
-                </p>
-                <button
-                  onClick={() => dispatch(setIsOpenRequestProposal(true))}
-                  className={`border ${
-                    isLightMode
-                      ? " text-blue-50 font-normal  bg-customBlue"
-                      : "border-white bg-customBlue"
-                  } px-5 py-2.5 rounded-md text-md hover:bg-customBlueHover hover:text-white duration-200 w-fit`}
-                >
-                  Get my custom quote
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-      </section>
-      {/* Darkmode Lightmode */}
-      <section className="absolute h-fit lg:top-0 top-[calc(35vh-56px+20px)] lg:bottom-0 lg:my-auto right-5 lg:left-[40%] space-y-2.5">
-        <button
+      {/* Sound Toggle */}
+      <motion.section 
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1 }}
+        className="fixed bottom-8 left-8 z-50"
+      >
+        <motion.button
           onClick={() => setSound(!sound)}
-          className="relative bg-gradient-to-b from-slate-800 to-slate-700 border-4 border-slate-600 w-32 h-14 rounded-full -ml-16 hidden lg:block"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={`relative w-16 h-16 rounded-full shadow-2xl transition-all duration-300 backdrop-blur-md ${
+            isLightMode 
+              ? 'bg-white/90 border-2 border-gray-200' 
+              : 'bg-gray-800/90 border-2 border-gray-700'
+          }`}
+          aria-label={sound ? "Mute sound" : "Play sound"}
         >
-          <span
-            className={`absolute top-1 w-10 h-10 bg-white rounded-full grid place-items-center text-slate-700 text-xl duration-200 ${
-              sound ? "right-[76px]" : "right-1"
-            }`}
-          >
+          <div className="absolute inset-0 flex items-center justify-center">
             <RxSpeakerLoud
-              className={`absolute duration-200 ${
-                !sound ? "invisible opacity-0" : "visible opacity-100"
-              }`}
+              className={`absolute text-2xl transition-all duration-300 ${
+                sound 
+                  ? 'opacity-100 scale-100 rotate-0' 
+                  : 'opacity-0 scale-50 -rotate-90'
+              } ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}
             />
             <RxSpeakerOff
-              className={`absolute duration-200 ${
-                sound ? "invisible opacity-0" : "visible opacity-100"
-              }`}
+              className={`absolute text-2xl transition-all duration-300 ${
+                !sound 
+                  ? 'opacity-100 scale-100 rotate-0' 
+                  : 'opacity-0 scale-50 rotate-90'
+              } ${isLightMode ? 'text-gray-700' : 'text-gray-300'}`}
             />
-          </span>
-        </button>
-        <audio
-          ref={audioRef}
-          controls
-          src="/music.mp3"
-          className="hidden"
-        ></audio>
-      </section>
+          </div>
+        </motion.button>
+        <audio ref={audioRef} controls src="/music.mp3" className="hidden"></audio>
+      </motion.section>
+
+      {/* Background Gradient Orbs */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <motion.div 
+          className={`absolute top-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-3xl ${
+            isLightMode ? 'bg-blue-300' : 'bg-blue-600'
+          }`}
+          animate={{
+            opacity: [0.1, 0.2, 0.1],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+        />
+        <motion.div 
+          className={`absolute bottom-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-3xl ${
+            isLightMode ? 'bg-purple-300' : 'bg-purple-600'
+          }`}
+          animate={{
+            opacity: [0.1, 0.2, 0.1],
+            scale: [1, 1.3, 1],
+          }}
+          transition={{
+            duration: 12,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 2
+          }}
+        />
+      </div>
     </main>
   );
 };

@@ -2,12 +2,16 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsOpenRequestProposal } from "../store/appSlice";
 import Stats from "./Stats";
 import TechSysOffices from "./TechSysOffices ";
-import { useTheme } from "../context/ThemeContext"; // Import useTheme
+import { useTheme } from "../context/ThemeContext";
 import ReactSEO from "../components/ReactSEO";
+import { motion } from "framer-motion";
+import { Award, Target, Users, TrendingUp, Sparkles, ArrowRight } from "lucide-react";
+
 const About = () => {
   const dispatch = useDispatch();
   const { accessibility } = useSelector((store) => store.app);
-  const { isLightMode } = useTheme(); // Access the theme
+  const { isLightMode } = useTheme();
+  
   const seoProps = {
     url: "https://adiya-business-solution-main.vercel.app",
     title: "About us",
@@ -19,263 +23,351 @@ const About = () => {
     keywords: "business solutions, CRM, website development, app development",
     twitterUsername: "@adiyabusiness",
   };
+
+  const values = [
+    {
+      icon: Award,
+      title: "Excellence",
+      description: "Delivering superior quality in every solution we create"
+    },
+    {
+      icon: Target,
+      title: "Innovation",
+      description: "Pioneering cutting-edge technologies for tomorrow's challenges"
+    },
+    {
+      icon: Users,
+      title: "Partnership",
+      description: "Building lasting relationships through trust and collaboration"
+    },
+    {
+      icon: TrendingUp,
+      title: "Growth",
+      description: "Empowering businesses to scale and succeed sustainably"
+    }
+  ];
+
   return (
-    <div
-      className={`${
-        isLightMode ? "bg-white text-black" : "bg-gray-900 text-white"
-      }`}
-    >
+    <div className={`${isLightMode ? "bg-white text-black" : "bg-gray-900 text-white"}`}>
       <ReactSEO {...seoProps} />
-      <div className="w-full md:w-10/12 mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-        <div className="lg:flex lg:items-center lg:justify-between gap-6">
-          <div className="flex flex-col lg:flex-row items-stretch justify-between">
-            {/* Content Section */}
-            <div className="lg:w-1/2 pr-0 lg:pr-8 flex flex-col justify-center">
-              <h2
-                className={`text-lg font-semibold mb-2 ${
-                  isLightMode ? "text-customBlue" : "text-darkModeButtonHover"
-                }`}
+      
+      {/* Hero Section */}
+      <div className={`w-full ${isLightMode ? 'bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50' : 'bg-gradient-to-br from-gray-900 via-slate-900 to-gray-800'}`}>
+        <div className="w-full md:w-10/12 mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+          <div className="lg:flex lg:items-center lg:justify-between gap-12">
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              className="lg:w-1/2 flex flex-col justify-center mb-10 lg:mb-0"
+            >
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="flex items-center gap-2 mb-4"
               >
-                Economy | Efficiency | Effectiveness
-              </h2>
-              <h1
-                className={`text-4xl sm:text-5xl md:text-6xl font-bold mb-4 ${
-                  isLightMode ? "text-gray-900" : "text-gray-100"
-                }`}
-              >
-                About Our Company
+                <Sparkles className={`w-5 h-5 ${isLightMode ? 'text-blue-600' : 'text-blue-400'}`} />
+                <span className={`text-sm font-semibold uppercase tracking-wider ${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                  Excellence • Innovation • Growth
+                </span>
+              </motion.div>
+              
+              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${isLightMode ? "text-gray-900" : "text-gray-100"}`}>
+                Transforming{" "}
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                  Business
+                </span>
+                <br />Through Technology
               </h1>
-              <h2
-                className={`text-2xl sm:text-3xl font-bold mb-4 ${
-                  isLightMode ? "text-customBlue" : "text-darkModeButtonHover"
-                }`}
-              >
+              
+              <h2 className={`text-2xl sm:text-3xl font-bold mb-6 ${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
                 Adiya Business Solution
               </h2>
-              <p
-                className={`text-lg sm:text-xl md:text-xl font-normal mb-8 ${
-                  isLightMode ? "text-black" : "text-gray-300"
+              
+              <p className={`text-lg sm:text-xl leading-relaxed mb-8 ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
+                Empowering businesses with innovative technology solutions that drive growth, enhance efficiency, and deliver measurable results. Your success is our mission.
+              </p>
+
+              <motion.button
+                onClick={() => dispatch(setIsOpenRequestProposal(true))}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-semibold shadow-lg transition-all ${
+                  isLightMode
+                    ? "bg-blue-600 hover:bg-blue-700 text-white shadow-blue-200"
+                    : "bg-blue-600 hover:bg-blue-500 text-white shadow-blue-900"
                 }`}
               >
-                We&apos;re here to bring financial stability, improve the
-                economy. Leave money issues with us and focus on your business.
-              </p>
-            </div>
+                Start Your Journey
+                <ArrowRight className="w-5 h-5" />
+              </motion.button>
+            </motion.div>
 
-            {/* Image Section */}
-            <div className="lg:w-2/4 h-full">
-              <img
-                src="https://bankmatching.com/wp-content/uploads/2023/12/pexels-fauxels-3182750.jpg"
-                alt="Company"
-                className="w-full h-48 sm:h-60 lg:h-72 rounded-3xl object-cover"
-              />
-            </div>
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="lg:w-1/2"
+            >
+              <div className="relative">
+                <div className={`absolute inset-0 ${isLightMode ? 'bg-blue-400' : 'bg-blue-600'} rounded-3xl transform rotate-3`}></div>
+                <img
+                  src="https://cdn.dribbble.com/userupload/6884099/file/original-8ae2dcc557cc306ae2904c527e50ffe6.jpg?resize=1504x846&vertical=center"
+                  alt="Professional team collaboration"
+                  className="relative w-full h-64 sm:h-80 lg:h-96 rounded-3xl object-cover shadow-2xl"
+                />
+              </div>
+            </motion.div>
           </div>
-        </div>
-
-        <div className="w-full object-cover hidden md:block  lg:block ">
-          <img
-            src="https://shechain.co/wp-content/uploads/2022/04/shechain.co_photos-1900-x-780-px-faq-1.png"
-            alt="Team raising hands in celebration"
-            className="w-full h-48 sm:h-72 md:h-96 object-cover rounded-3xl "
-          />
         </div>
       </div>
 
-      <main
-        className={`flex flex-col md:flex-row items-center justify-between mt-7 mb-10 space-y-10 md:space-y-0 md:space-x-10 font-light ${
-          isLightMode
-            ? "bg-gradient-to-br from-blue-50 to-purple-50 text-black"
-            : "text-white"
-        }`}
+      {/* Team Image Section */}
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="w-full md:w-10/12 mx-auto px-4 sm:px-6 lg:px-8 py-12"
       >
-        <section className="space-y-5 text-sm sm:text-base p-4">
-          <div className="container mx-auto px-4 py-8 w-full md:w-10/12">
-            {/* Section 1: Left content, right image */}
-            <div className="flex flex-col md:flex-row items-center mb-12">
-              <div
-                className={`md:w-${
-                  accessibility.hideImages ? "full" : "1/2"
-                } md:pr-8 mb-6 md:mb-0`}
-              >
-                <h1
-                  className={`text-4xl font-semibold sm:text-5xl md:text-4xl ${
-                    isLightMode ? "text-black" : "text-white"
-                  }`}
+        <img
+          src="https://shechain.co/wp-content/uploads/2022/04/shechain.co_photos-1900-x-780-px-faq-1.png"
+          alt="Team celebrating success"
+          className="w-full h-48 sm:h-72 md:h-96 object-cover rounded-3xl shadow-2xl"
+        />
+      </motion.div>
+
+      {/* Our Values Section */}
+      <div className={`py-20 ${isLightMode ? 'bg-gradient-to-br from-slate-50 to-blue-50' : 'bg-gray-800'}`}>
+        <div className="w-full md:w-10/12 mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className={`text-4xl md:text-5xl font-bold mb-4 ${isLightMode ? "text-gray-900" : "text-white"}`}>
+              Our Core Values
+            </h2>
+            <p className={`text-xl ${isLightMode ? "text-gray-600" : "text-gray-400"}`}>
+              The principles that guide everything we do
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {values.map((value, index) => {
+              const Icon = value.icon;
+              return (
+                <motion.div
+                  key={value.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ y: -8 }}
+                  className={`p-6 rounded-2xl ${
+                    isLightMode 
+                      ? 'bg-white border-2 border-blue-100 hover:border-blue-300' 
+                      : 'bg-gray-900 border-2 border-gray-700 hover:border-blue-600'
+                  } shadow-lg transition-all`}
                 >
-                  At{" "}
-                  <span
-                    className={`text-customBlue sm:text-customBlue ${
-                      isLightMode
-                        ? "text-customBlue"
-                        : " text-darkModeButtonHover"
-                    }`}
-                  >
-                    Adiya Business Solution
+                  <div className={`w-14 h-14 rounded-xl ${isLightMode ? 'bg-blue-100' : 'bg-blue-900'} flex items-center justify-center mb-4`}>
+                    <Icon className={`w-7 h-7 ${isLightMode ? 'text-blue-600' : 'text-blue-400'}`} />
+                  </div>
+                  <h3 className={`text-xl font-bold mb-3 ${isLightMode ? 'text-gray-900' : 'text-white'}`}>
+                    {value.title}
+                  </h3>
+                  <p className={`${isLightMode ? 'text-gray-600' : 'text-gray-400'}`}>
+                    {value.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Services & Story Section */}
+      <main className={`py-20 ${isLightMode ? "bg-white" : "bg-gray-900"}`}>
+        <section className="space-y-20">
+          <div className="container mx-auto px-4 w-full md:w-10/12">
+            {/* Services Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row items-center gap-12 mb-20"
+            >
+              <div className="md:w-1/2">
+                <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
+                  isLightMode ? 'bg-blue-100 text-blue-600' : 'bg-blue-900 text-blue-300'
+                }`}>
+                  What We Offer
+                </div>
+                
+                <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${isLightMode ? "text-gray-900" : "text-white"}`}>
+                  Comprehensive{" "}
+                  <span className={`${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                    Business Solutions
                   </span>
-                  &nbsp; we make technology accessible
                 </h1>
-                <h2
-                  className={`text-2xl sm:text-3xl font-semibold mb-4 pt-6 ${
-                    isLightMode ? "text-customBlue" : "text-darkModeButtonHover"
-                  }`}
-                >
-                  Our Services
+                
+                <h2 className={`text-2xl font-semibold mb-6 ${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                  End-to-End Technology Services
                 </h2>
-                <p
-                  className={`mb-4 font-normal text-lg sm:text-xl text-justify   ${
-                    isLightMode
-                      ? "text-gray-500 "
-                      : "text-gray-300 text-justify"
-                  }`}
-                >
-                  We offer a comprehensive range of services, including Product
-                  Development, Product Testing, Team Onboarding, Pilot Run,
-                  Digital Marketing, Promotion, Investment Deck, and Pitch
-                  Training. We take care of everything, ensuring that your
-                  startup journey is supported and guided every step of the way.
+                
+                <p className={`mb-8 text-lg leading-relaxed ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
+                  From concept to launch and beyond, we provide a full spectrum of services including Product Development, Quality Assurance Testing, Strategic Team Building, Pilot Programs, Digital Marketing Excellence, Brand Promotion, Investment Deck Creation, and Executive Pitch Training. Our holistic approach ensures your startup journey is seamless, strategic, and success-driven.
                 </p>
 
-                <button
+                <motion.button
                   onClick={() => dispatch(setIsOpenRequestProposal(true))}
-                  className={`border border-black px-5 py-2.5 rounded-md text-lg sm:text-xl font-normal ${
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  className={`inline-flex items-center gap-2 px-8 py-4 rounded-xl text-lg font-semibold shadow-lg ${
                     isLightMode
-                      ? "bg-customBlue hover:bg-customBlueHover text-white"
-                      : "bg-customBlue hover:bg-darkModeButtonHover text-white"
+                      ? "bg-blue-600 hover:bg-blue-700 text-white"
+                      : "bg-blue-600 hover:bg-blue-500 text-white"
                   }`}
                 >
-                  Let&apos;s get started
-                </button>
+                  Let's Get Started
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
               </div>
 
-              <div className="md:w-1/2 mt-6 md:mt-0">
-                {!accessibility.hideImages ? (
+              {!accessibility.hideImages && (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="md:w-1/2"
+                >
                   <img
                     src="https://cdn.dribbble.com/userupload/4871858/file/original-915b36c3c2b7ca17351b02c6c39c6f9c.jpg?resize=1504x1128"
-                    alt="Our journey illustration"
-                    className="rounded-lg w-full"
+                    alt="Innovative business solutions"
+                    className="rounded-2xl w-full shadow-2xl"
                   />
-                ) : (
-                  <div className="md:w-1/2 hidden" />
-                )}
-              </div>
-            </div>
+                </motion.div>
+              )}
+            </motion.div>
 
-            {/* Section 2: Left image, right content */}
-            <div className="flex flex-col md:flex-row-reverse items-center">
-              <div
-                className={`md:w-${
-                  accessibility.hideImages ? "full" : "1/2"
-                } md:pl-8 mb-6 md:mb-0`}
-              >
-                <h2
-                  className={`text-2xl sm:text-3xl font-semibold mb-4 ${
-                    isLightMode ? "text-black" : "text-white"
-                  }`}
-                >
-                  Our Story
+            {/* Story Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="flex flex-col md:flex-row-reverse items-center gap-12"
+            >
+              <div className="md:w-1/2">
+                <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-4 ${
+                  isLightMode ? 'bg-purple-100 text-purple-600' : 'bg-purple-900 text-purple-300'
+                }`}>
+                  Our Journey
+                </div>
+                
+                <h2 className={`text-4xl md:text-5xl font-bold mb-6 ${isLightMode ? "text-gray-900" : "text-white"}`}>
+                  A Story of Purpose & Passion
                 </h2>
-                <p
-                  className={`text-lg sm:text-xl font-normal text-justify ${
-                    isLightMode ? "text-gray-500" : "text-gray-300"
-                  }`}
-                >
-                  <span
-                    className={`block mb-2 text-lg  font-medium  ${
-                      isLightMode
-                        ? "text-customBlue  "
-                        : "text-darkModeButtonHover "
-                    }`}
-                  >
-                    How it all began
-                  </span>
-                  It all began with a simple plan to assist a friend in need
-                  during our final days of college. Through this experience, we
-                  quickly realized that embarking on a startup journey is a
-                  challenging and often thankless endeavor. Motivated by the
-                  notion that startups deserve more support, we decided to
-                  streamline the lives of startup founders by providing them
-                  with everything they need at their disposal. Our aim is to
-                  enable them to concentrate solely on execution and operations.
-                  Over the span of 9 years, we have continued this mission,
-                  assisting 134 startups in their growth. Trust us when we say,
-                  the satisfaction derived from this endeavor is unparalleled.
-                </p>
+                
+                <div className={`space-y-4 text-lg leading-relaxed ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
+                  <p className={`font-semibold text-xl ${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                    From humble beginnings to industry leadership
+                  </p>
+                  
+                  <p>
+                    Our journey began in the final days of college when we helped a friend launch their startup. That experience opened our eyes to the immense challenges entrepreneurs face—limited resources, overwhelming technical complexities, and the constant struggle to focus on what truly matters: building their vision.
+                  </p>
+                  
+                  <p>
+                    Driven by the belief that every startup deserves expert support, we founded Adiya Business Solution with a singular mission: to remove technological barriers and empower founders to focus on innovation and growth.
+                  </p>
+                  
+                  <p className="font-semibold">
+                    Over 9 years, we've partnered with 134+ startups, transforming ideas into thriving businesses. Each success story reinforces our commitment to excellence and innovation. This is more than business—it's our calling.
+                  </p>
+                </div>
               </div>
 
-              <div className="md:w-1/2 mt-6 md:mt-0">
-                {!accessibility.hideImages ? (
+              {!accessibility.hideImages && (
+                <motion.div 
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  className="md:w-1/2"
+                >
                   <img
                     src="https://cdn.dribbble.com/userupload/14666255/file/original-52fbe74ae75b68a48cd1fffb58365670.png?resize=1504x1128"
-                    alt="Our journey illustration"
-                    className="rounded-lg w-full"
+                    alt="Our growth journey"
+                    className="rounded-2xl w-full shadow-2xl"
                   />
-                ) : (
-                  <div className="md:w-1/2 hidden" />
-                )}
-              </div>
-            </div>
+                </motion.div>
+              )}
+            </motion.div>
           </div>
         </section>
       </main>
 
       <Stats />
 
-      <div className="container mx-auto p-8 w-full md:w-10/12">
-        <div className="flex flex-col md:flex-row gap-8">
-          <div className="flex-1">
-            <h1
-              className={`text-4xl sm:text-4xl md:text-5xl font-bold text-left mb-4 ${
-                isLightMode ? "text-black" : "text-white"
-              }`}
-            >
-              Meet{" "}
-              <span
-                className={`${
-                  isLightMode
-                    ? "text-customBlue"
-                    : "text-text-darkModeButtonHover"
-                }`}
-              >
-                The
-              </span>{" "}
-              Founder
-            </h1>
-            <p
-              className={`text-xl text-justify sm:text-xl  font-normal ${
-                isLightMode ? "text-black" : "text-white"
-              }`}
-            >
-              <span className="font-bold">&quot;</span>The visionary CEO-Founder
-              of our business solutions company drives innovation with bespoke
-              CRM systems, cutting-edge website development, and app
-              development, empowering businesses to excel in today’s dynamic,
-              competitive market. <span className="font-bold">&quot;</span>             
-            </p>
-            <div className="mt-4">
-              <h3
-                className={`font-bold ${
-                  isLightMode ? "text-black" : "text-white"
-                }`}
-              >
-                Avit Garg
-              </h3>
-              <p
-                className={`text-gray-400 ${
-                  isLightMode ? "text-gray-600" : "text-gray-300"
-                }`}
-              >
-                CEO-ABS
+      {/* Founder Section */}
+      <div className={`py-20 ${isLightMode ? 'bg-gradient-to-br from-blue-50 to-indigo-50' : 'bg-gray-800'}`}>
+        <div className="container mx-auto px-4 w-full md:w-10/12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex flex-col md:flex-row gap-12 items-center"
+          >
+            <div className="flex-1">
+              <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold mb-6 ${
+                isLightMode ? 'bg-blue-100 text-blue-600' : 'bg-blue-900 text-blue-300'
+              }`}>
+                Leadership
+              </div>
+              
+              <h1 className={`text-4xl md:text-5xl font-bold mb-6 ${isLightMode ? "text-gray-900" : "text-white"}`}>
+                Meet{" "}
+                <span className={`${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                  The Visionary
+                </span>
+              </h1>
+              
+              <p className={`text-lg leading-relaxed mb-8 ${isLightMode ? "text-gray-700" : "text-gray-300"}`}>
+                <span className="text-3xl font-serif">"</span>
+                As CEO and Founder, my vision is to democratize technology and make enterprise-grade solutions accessible to businesses of all sizes. Through innovative CRM systems, cutting-edge web and mobile applications, we empower organizations to compete, grow, and thrive in an ever-evolving digital landscape. Success isn't just about technology—it's about the transformation it enables.
+                <span className="text-3xl font-serif">"</span>
               </p>
+              
+              <div className={`p-6 rounded-2xl ${isLightMode ? 'bg-white border-2 border-blue-200' : 'bg-gray-900 border-2 border-gray-700'}`}>
+                <h3 className={`text-2xl font-bold mb-1 ${isLightMode ? "text-gray-900" : "text-white"}`}>
+                  Avit Garg
+                </h3>
+                <p className={`text-lg font-medium ${isLightMode ? "text-blue-600" : "text-blue-400"}`}>
+                  CEO & Founder, Adiya Business Solution
+                </p>
+                <p className={`text-sm mt-2 ${isLightMode ? "text-gray-600" : "text-gray-400"}`}>
+                  9+ Years of Industry Excellence
+                </p>
+              </div>
             </div>
-          </div>
-          <div className="flex-1">
-            <img
-              src="/CEO.png"
-              alt="Founder"
-              className="w-full h-80 object-contain rounded-lg"
-            />
-          </div>
+            
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex-1"
+            >
+              <div className="relative">
+                <div className={`absolute inset-0 ${isLightMode ? 'bg-blue-400' : 'bg-blue-600'} rounded-2xl transform -rotate-3`}></div>
+                <img
+                  src="/CEO.png"
+                  alt="Avit Garg - CEO & Founder"
+                  className="relative w-full h-96 object-contain rounded-2xl shadow-2xl"
+                />
+              </div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
 

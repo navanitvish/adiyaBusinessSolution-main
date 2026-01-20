@@ -52,7 +52,7 @@ export const testimonials = [
       rating: 5,
     },
     {
-      id: 1,
+      id: 6,
       name: "Rajesh Mishra",
       avatar:
         "https://www.hyperlinkinfosystem.com/assets/img/clients-say/smyllo.png",
@@ -62,7 +62,7 @@ export const testimonials = [
       rating: 5,
     },
     {
-      id: 2,
+      id: 7,
       name: "Sumit Sharma",
       avatar:
         "https://www.hyperlinkinfosystem.com/assets/img/clients-say/ay5edmm.png",
@@ -72,7 +72,7 @@ export const testimonials = [
       rating: 5,
     },
     {
-      id: 3,
+      id: 8,
       name: "Shawla Dev",
       avatar:
         "https://www.hyperlinkinfosystem.com/assets/img/clients-say/todotix.png",
@@ -83,7 +83,7 @@ export const testimonials = [
     },
     // Add more testimonials to see the sliding effect
     {
-      id: 4,
+      id: 9,
       name: "Ema Sharma",
       avatar:
         "https://www.hyperlinkinfosystem.com/assets/img/clients-say/smyllo.png",
@@ -93,7 +93,7 @@ export const testimonials = [
       rating: 4,
     },
     {
-      id: 5,
+      id: 10,
       name: "Michael Yadav",
       avatar:
         "https://www.hyperlinkinfosystem.com/assets/img/clients-say/delviy.png",
