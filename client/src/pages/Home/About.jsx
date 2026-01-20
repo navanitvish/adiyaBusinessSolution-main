@@ -13,7 +13,7 @@ const aboutContent = {
     "https://cdn.dribbble.com/users/3577980/screenshots/12205878/media/cdf4d6523060a4f95061163760f928f5.jpg?resize=1200x900&vertical=center",
   stats: [
     { value: "500+", label: "Startups Launched", icon: "🚀", color: "blue" },
-    { value: "₹100Cr+", label: "Funding Secured", icon: "💰", color: "green" },
+    // { value: "₹100Cr+", label: "Funding Secured", icon: "💰", color: "green" },
     { value: "95%", label: "Success Rate", icon: "📈", color: "purple" },
     { value: "24/7", label: "Expert Support", icon: "🎯", color: "orange" },
   ],
