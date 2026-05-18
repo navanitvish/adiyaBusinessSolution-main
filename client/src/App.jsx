@@ -8,6 +8,13 @@ import Services from "./pages/Services";
 import Faqs from "./pages/Faqs";
 import Contact from "./pages/Contact";
 import ReactSEO from "./components/ReactSEO";
+import ServicesPage from "./pages/ServicesPage";
+import CaseStudiesPage from "./pages/CaseStudiesPage";
+import TermsPage from "./pages/TermsPage";
+import PrivacyPage from "./pages/PrivacyPage";
+import CookiePage from "./pages/CookiePage";
+import RisksPage from "./pages/RisksPage";
+import DocsPage from "./pages/Documentaion";
 
 const SEOWrapper = () => {
   const location = useLocation();
@@ -45,6 +52,15 @@ const App = () => {
             <Route path="/services/:param" element={<Services />} />
             <Route path="/faqs" element={<Faqs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/what-we-do" element={<ServicesPage />} />
+            <Route path="/case-studies" element={<CaseStudiesPage />} />
+            {/* Add more routes as needed */}
+
+            <Route path="/terms" element={<TermsPage />} /> 
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/cookies" element={<CookiePage />} />
+            <Route path="/risks" element={<RisksPage />} />
+             <Route path="/documentation" element={<DocsPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

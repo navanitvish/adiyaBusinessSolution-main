@@ -7,9 +7,12 @@ import ResponsiveMenu from "./ResponsiveMenu";
 import { useTheme } from "../../context/ThemeContext";
 import { BsSun, BsMoonStars } from "react-icons/bs";
 import { navData } from "../../configs/navData";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import { useDispatch } from "react-redux";
+import { setIsOpenRequestProposal } from "../../store/appSlice";
 
 const Navbar = ({ accessibility }) => {
+    const dispatch = useDispatch();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const [navBg, setNavBg] = useState(false);
@@ -19,19 +22,15 @@ const Navbar = ({ accessibility }) => {
 
   const { isLightMode, toggleTheme } = useTheme();
 
-  // Detect Scroll to update navbar background and progress
   useEffect(() => {
     const handleScroll = () => {
-      const scrolled = window.scrollY >= 56;
-      setNavBg(scrolled);
-      
-      // Calculate scroll progress
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-      const scrolled_percentage = (window.scrollY / windowHeight) * 100;
-      setScrollProgress(scrolled_percentage);
+      setNavBg(window.scrollY >= 56);
+      const windowHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      setScrollProgress((window.scrollY / windowHeight) * 100);
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -42,150 +41,222 @@ const Navbar = ({ accessibility }) => {
   const handleRedirect = (i) =>
     i.link !== "Services" ? navigate(`${i.to}`) : null;
 
+  const isScrolled = pathname.length > 1 || navBg;
+
+  /* ── Theme Toggle ── */
   const ThemeToggle = () => (
     <button
       onClick={toggleTheme}
-      className="group relative bg-gradient-to-r from-blue-600 to-purple-600 p-0.5 rounded-full overflow-hidden hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
       aria-label="Toggle theme"
+      className={`
+        relative w-[52px] h-7 rounded-full transition-all duration-500 ease-in-out
+        focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-indigo-500
+        ${isLightMode
+          ? "bg-slate-200 hover:bg-slate-300"
+          : "bg-slate-700 hover:bg-slate-600"
+        }
+      `}
     >
-      <div className={`relative w-14 h-7 rounded-full flex items-center transition-all duration-300 ${
-        isLightMode ? 'bg-white' : 'bg-gray-800'
-      }`}>
-        <span
-          className={`absolute w-6 h-6 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full shadow-lg transform transition-all duration-300 flex items-center justify-center ${
-            isLightMode ? "translate-x-7" : "translate-x-0.5"
-          }`}
-        >
-          <BsSun
-            className={`absolute text-white text-xs transition-all duration-300 ${
-              isLightMode ? "opacity-100 rotate-0 scale-100" : "opacity-0 -rotate-90 scale-50"
-            }`}
-          />
-          <BsMoonStars
-            className={`absolute text-white text-xs transition-all duration-300 ${
-              !isLightMode ? "opacity-100 rotate-0 scale-100" : "opacity-0 rotate-90 scale-50"
-            }`}
-          />
-        </span>
-      </div>
+      {/* Pill knob */}
+      <span
+        className={`
+          absolute top-0.5 w-6 h-6 rounded-full flex items-center justify-center
+          shadow-md transition-all duration-500 ease-in-out
+          ${isLightMode
+            ? "translate-x-[24px] bg-white"
+            : "translate-x-0.5 bg-slate-900"
+          }
+        `}
+      >
+        {isLightMode ? (
+          <BsSun className="text-amber-500 text-xs" />
+        ) : (
+          <BsMoonStars className="text-indigo-400 text-xs" />
+        )}
+      </span>
     </button>
   );
 
-  const CTAButton = () => (
+  /* ── Desktop Nav Link ── */
+  const NavLink = ({ item }) => {
+    const isActive = pathname === item.to;
+    return (
+      <div
+        className="relative group"
+        onMouseEnter={() => item.link === "Services" && setIsOpenServices(true)}
+        onMouseLeave={() => item.link === "Services" && setIsOpenServices(false)}
+      >
+        <button
+          onClick={() => handleRedirect(item)}
+          className={`
+            relative px-1 py-0.5 font-medium tracking-wide transition-colors duration-200
+            focus:outline-none focus-visible:underline
+            ${accessibility.biggerText ? "text-lg" : "text-[0.9rem]"}
+            ${isScrolled
+              ? isLightMode
+                ? "text-slate-700 hover:text-indigo-600"
+                : "text-slate-300 hover:text-indigo-300"
+              : isLightMode
+              ? "text-slate-900 hover:text-indigo-600"
+              : "text-slate-100 hover:text-indigo-300"
+            }
+            ${isActive ? (isLightMode ? "text-indigo-600" : "text-indigo-300") : ""}
+          `}
+        >
+          {item.link}
+          {/* Active / hover underline */}
+          <span
+            className={`
+              absolute -bottom-0.5 left-0 h-px rounded-full transition-all duration-300
+              bg-gradient-to-r from-indigo-500 to-violet-500
+              ${isActive ? "w-full opacity-100" : "w-0 opacity-0 group-hover:w-full group-hover:opacity-100"}
+            `}
+          />
+        </button>
+
+        {item.link === "Services" && (
+          <ServicesMenu
+            isOpenServices={isOpenServices}
+            setIsOpenServices={setIsOpenServices}
+          />
+        )}
+      </div>
+    );
+  };
+
+  /* ── Hamburger Button ── */
+  const HamburgerButton = () => (
     <button
-      onClick={() => navigate("/contact")}
-      className="hidden lg:block px-6 py-2.5 rounded-lg font-semibold text-white bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-500 hover:to-purple-500 transition-all duration-300 shadow-md hover:shadow-xl hover:shadow-blue-500/50 transform hover:-translate-y-0.5"
+      onClick={() => setIsOpenResponsiveMenu(!isOpenResponsiveMenu)}
+      aria-label={isOpenResponsiveMenu ? "Close menu" : "Open menu"}
+      className={`
+        relative w-9 h-9 rounded-lg flex items-center justify-center
+        transition-all duration-300 focus:outline-none
+        ${isOpenResponsiveMenu
+          ? "bg-indigo-600 text-white"
+          : isLightMode
+          ? "bg-slate-100 text-slate-700 hover:bg-slate-200"
+          : "bg-slate-800 text-slate-200 hover:bg-slate-700"
+        }
+      `}
     >
-      Get Started
+      <CgClose
+        className={`absolute text-xl transition-all duration-300 ${
+          isOpenResponsiveMenu
+            ? "opacity-100 rotate-0 scale-100"
+            : "opacity-0 rotate-90 scale-50"
+        }`}
+      />
+      <HiOutlineMenuAlt1
+        className={`absolute text-xl transition-all duration-300 ${
+          !isOpenResponsiveMenu
+            ? "opacity-100 rotate-0 scale-100"
+            : "opacity-0 -rotate-90 scale-50"
+        }`}
+      />
     </button>
   );
 
   return (
     <>
+      {/* ═══════════════════ NAV ═══════════════════ */}
       <nav
         id="navbar"
-        className={`px-5 xl:px-20 sm:px-10 h-16 w-full z-50 top-0 flex items-center justify-between transition-all duration-300 ${
-          pathname.length > 1
-            ? `${isLightMode ? 'bg-white/95 text-gray-900' : 'bg-gray-900/95 text-white'} backdrop-blur-lg sticky shadow-lg border-b ${isLightMode ? 'border-gray-200' : 'border-gray-800'}`
+        className={`
+          px-5 sm:px-10 xl:px-20 h-16 w-full z-50 top-0
+          flex items-center justify-between
+          transition-all duration-300
+          ${pathname.length > 1
+            ? `sticky shadow-sm border-b
+               ${isLightMode
+                 ? "bg-white/90 text-slate-900 border-slate-200"
+                 : "bg-[#0e0e14]/90 text-white border-slate-800"
+               }
+               backdrop-blur-xl`
             : navBg
-            ? `${isLightMode ? 'bg-white/95 text-gray-900' : 'bg-gray-900/95 text-white'} backdrop-blur-lg fixed shadow-lg border-b ${isLightMode ? 'border-gray-200' : 'border-gray-800'}`
-            : `bg-transparent backdrop-blur-none sticky lg:fixed shadow-none ${
-                isLightMode ? "text-gray-900" : "text-white"
-              }`
-        }`}
+            ? `fixed shadow-sm border-b
+               ${isLightMode
+                 ? "bg-white/90 text-slate-900 border-slate-200"
+                 : "bg-[#0e0e14]/90 text-white border-slate-800"
+               }
+               backdrop-blur-xl`
+            : `sticky lg:fixed bg-transparent backdrop-blur-none shadow-none
+               ${isLightMode ? "text-slate-900" : "text-white"}`
+          }
+        `}
       >
-        {/* Scroll Progress Bar */}
-        <div 
-          className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 transition-all duration-300"
+        {/* Scroll progress bar */}
+        <div
+          className="absolute bottom-0 left-0 h-[2px] bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500 transition-all duration-100"
           style={{ width: `${scrollProgress}%` }}
         />
 
-        {/* Logo Section with enhanced styling */}
-        <section 
-          onClick={() => navigate("/")} 
-          className="cursor-pointer group relative"
+        {/* ── Logo ── */}
+        <Link
+          to="/"
+          className="flex items-center gap-2.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 rounded-lg"
         >
-          <Link to="/" className="flex items-center gap-2">
-            <div className={`w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center text-white font-bold text-xl shadow-lg group-hover:shadow-xl group-hover:shadow-blue-500/50 transition-all duration-300 group-hover:scale-110`}>
-              A
-            </div>
-            <h1 className={`font-architects-daughter text-2xl md:text-3xl xl:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent group-hover:from-blue-500 group-hover:to-purple-500 transition-all duration-300`}>
-              Adiya
-            </h1>
-          </Link>
-        </section>
+          {/* Logo mark */}
+          <div
+            className={`
+              w-9 h-9 rounded-xl flex items-center justify-center text-white font-bold text-lg
+              bg-gradient-to-br from-indigo-500 to-violet-600
+              shadow-md group-hover:shadow-lg group-hover:shadow-indigo-500/40
+              transition-all duration-300 group-hover:scale-105
+            `}
+          >
+            A
+          </div>
 
-        {/* Navigation Links and Theme Toggle for larger screens */}
-        <section
-          className={`relative lg:flex hidden items-center justify-end flex-grow gap-8 ${
-            accessibility.biggerText ? "text-xl" : "text-base"
-          }`}
-        >
-          <div className="flex items-center space-x-8">
+          {/* Wordmark */}
+          <span
+            className={`
+              font-bold text-xl tracking-tight
+              bg-gradient-to-r from-indigo-500 to-violet-600 bg-clip-text text-transparent
+              transition-all duration-300 group-hover:from-indigo-400 group-hover:to-violet-500
+            `}
+          >
+            Adiya
+          </span>
+        </Link>
+
+        {/* ── Desktop links + controls ── */}
+        <section className="hidden lg:flex items-center gap-8">
+          {/* Nav links */}
+          <nav className="flex items-center gap-7">
             {navData.map((i) => (
-              <div key={i.link} className="relative group">
-                <span
-                  onMouseEnter={() =>
-                    i.link === "Services" && setIsOpenServices(true)
-                  }
-                  onMouseLeave={() =>
-                    i.link === "Services" && setIsOpenServices(false)
-                  }
-                  onClick={() => handleRedirect(i)}
-                  className={`duration-300 cursor-pointer font-semibold relative inline-block ${
-                    pathname.length > 1
-                      ? `${isLightMode ? 'text-gray-700 hover:text-blue-600' : 'text-gray-200 hover:text-blue-400'}`
-                      : navBg
-                      ? `${isLightMode ? 'text-gray-700 hover:text-blue-600' : 'text-gray-200 hover:text-blue-400'}`
-                      : `${isLightMode ? "text-gray-900 hover:text-blue-600" : "text-white hover:text-blue-400"}`
-                  }`}
-                >
-                  {i.link}
-                  <span className={`absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-purple-600 transition-all duration-300 group-hover:w-full`} />
-                </span>
-                {i.link === "Services" && (
-                  <ServicesMenu
-                    isOpenServices={isOpenServices}
-                    setIsOpenServices={setIsOpenServices}
-                  />
-                )}
-              </div>
+              <NavLink key={i.link} item={i} />
             ))}
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <ThemeToggle />
-            {/* <CTAButton /> */}
-          </div>
+          </nav>
+
+          {/* Divider */}
+          <div
+            className={`h-5 w-px ${isLightMode ? "bg-slate-200" : "bg-slate-700"}`}
+          />
+
+          {/* Theme toggle */}
+          <ThemeToggle />
+
+          {/* CTA */}
+          <button
+             onClick={() => dispatch(setIsOpenRequestProposal(true))}
+            className="
+              px-5 py-2 rounded-lg text-sm font-semibold text-white
+              bg-gradient-to-r from-indigo-500 to-violet-600
+              hover:from-indigo-400 hover:to-violet-500
+              shadow-md hover:shadow-lg hover:shadow-indigo-500/40
+              transition-all duration-300 hover:-translate-y-px
+              focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400
+            "
+          >
+            Get Started
+          </button>
         </section>
 
-        {/* Responsive Menu and Theme Toggle */}
+        {/* ── Mobile controls ── */}
         <section className="flex items-center gap-3 lg:hidden">
           <ThemeToggle />
-          <button
-            onClick={() => setIsOpenResponsiveMenu(!isOpenResponsiveMenu)}
-            className={`relative w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 ${
-              isOpenResponsiveMenu 
-                ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg shadow-blue-500/50' 
-                : `${isLightMode ? 'bg-gray-100 text-gray-700 hover:bg-gray-200' : 'bg-gray-800 text-gray-200 hover:bg-gray-700'}`
-            }`}
-            aria-label={isOpenResponsiveMenu ? "Close menu" : "Open menu"}
-          >
-            <CgClose 
-              className={`absolute text-2xl transition-all duration-300 ${
-                isOpenResponsiveMenu 
-                  ? 'opacity-100 rotate-0 scale-100' 
-                  : 'opacity-0 rotate-90 scale-50'
-              }`}
-            />
-            <HiOutlineMenuAlt1 
-              className={`absolute text-2xl transition-all duration-300 ${
-                !isOpenResponsiveMenu 
-                  ? 'opacity-100 rotate-0 scale-100' 
-                  : 'opacity-0 -rotate-90 scale-50'
-              }`}
-            />
-          </button>
+          <HamburgerButton />
         </section>
       </nav>
 

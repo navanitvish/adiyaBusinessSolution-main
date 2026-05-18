@@ -1,258 +1,262 @@
 import React, { useState, useEffect } from "react";
-import { ChevronUp, Phone, MapPin, Mail, ArrowUp } from "lucide-react";
+import { ChevronDown, Phone, MapPin, Mail, ArrowUp } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 import { SocialIcon } from "react-social-icons";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
+/* ─────────────────────────────────────────────
+   Data
+───────────────────────────────────────────── */
+const footerSections = [
+
+
+ 
+  {
+    title: "Company",
+    items: [
+      { name: "Home", link: "/" },
+      { name: "About Us", link: "/about" },
+      { name: "What We Do", link: "/what-we-do" },
+      { name: "Case Studies", link: "/case-studies" },
+    ],
+  },
+  {
+    title: "Resources",
+    items: [
+      { name: "Blog", link: "/blog" },
+      { name: "FAQs", link: "/faqs" },
+      { name: "Documentation", link: "/documentation" },
+      { name: "Support Center", link: "/support" },
+    ],
+  },
+  {
+
+    title: "Legal",
+    items: [
+      { name: "Terms of Use", link: "/terms" },
+      { name: "Privacy Policy", link: "/privacy" },
+      { name: "Cookie Notice", link: "/cookies" },
+      { name: "Key Risks", link: "/risks" },
+    ],
+  },
+];
+
+const offices = [
+  {
+    name: "Mumbai",
+    address:
+      "Level 1, Gate Avenue, Next to DCB Bank, Andheri, Mumbai – 400053",
+    phone: "+91 93721 94890",
+  },
+  {
+    name: "Lucknow",
+    address:
+      "C-22 Paradise Garden, Bakshi Talaab, Sitapur Road, Near K.E. Polytechnic, Lucknow – 226201",
+    phone: "+91 93721 94890",
+  },
+  {
+    name: "Bangalore",
+    address:
+      "412, Sanjay Nagar, Bansu Apartment, Near Bank of Baroda, Bangalore – 560094",
+    phone: "+91 93721 94890",
+  },
+];
+
+const socialLinks = [
+  { url: "https://in.linkedin.com/company/adiya-business-solution", label: "LinkedIn" },
+  { url: "https://www.facebook.com/adiyabusinesssolution", label: "Facebook" },
+  { url: "https://x.com/adiyabusiness", label: "X (Twitter)" },
+  { url: "https://www.instagram.com/adiyabusinesssolution", label: "Instagram" },
+];
+
+/* ─────────────────────────────────────────────
+   Motion presets
+───────────────────────────────────────────── */
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i = 0) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, delay: i * 0.08, ease: [0.4, 0, 0.2, 1] },
+  }),
+};
+
+/* ─────────────────────────────────────────────
+   Component
+───────────────────────────────────────────── */
 const Footer = () => {
-  const [openSection, setOpenSection] = useState(null);
   const { isLightMode } = useTheme();
+  const [openSection, setOpenSection] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 400);
-    };
-
-    handleResize();
-    handleScroll();
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
-    
+    const onResize = () => setIsMobile(window.innerWidth < 768);
+    const onScroll = () => setShowScrollTop(window.scrollY > 400);
+    onResize();
+    onScroll();
+    window.addEventListener("resize", onResize);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", onResize);
+      window.removeEventListener("scroll", onScroll);
     };
   }, []);
 
-  const toggleSection = (section) => {
-    if (isMobile) {
-      setOpenSection(openSection === section ? null : section);
-    }
-  };
+  const toggle = (title) =>
+    isMobile && setOpenSection((p) => (p === title ? null : title));
 
-  const footerSections = [
-    {
-      title: "Company",
-      items: [
-        { name: "Home", link: "/" },
-        { name: "About Us", link: "/about" },
-        { name: "What We Do", link: "/services" },
-        { name: "Case Studies", link: "/case-studies" },
-      ],
-    },
-    {
-      title: "Resources",
-      items: [
-        { name: "Blog", link: "/blog" },
-        { name: "FAQs", link: "/faqs" },
-        { name: "Documentation", link: "/docs" },
-        { name: "Support Center", link: "/support" },
-      ],
-    },
-    {
-      title: "Legal",
-      items: [
-        { name: "Terms of Use", link: "/terms" },
-        { name: "Privacy Policy", link: "/privacy" },
-        { name: "Cookie Notice", link: "/cookies" },
-        { name: "Key Risks", link: "/risks" },
-      ],
-    },
-  ];
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  const offices = [
-    {
-      name: "Mumbai Office",
-      address: "Level 1, Gate Avenue, Next to DCB Bank, Andheri, Mumbai - 400053",
-      phone: "+91 93721 94890",
-    },
-    {
-      name: "Lucknow Office",
-      address: "C-22 Paradise Garden, Bakshi Talaab, Sitapur Road, Near K.E. Polytechnic College, Lucknow, Uttar Pradesh - 226201",
-      phone: "+91 93721 94890",
-    },
-    {
-      name: "Bangalore Office",
-      address: "412, Sanjay Nagar, Bansu Apartment, Near Bank of Baroda, Bangalore - 560094",
-      phone: "+91 93721 94890",
-    },
-  ];
-
-  const socialLinks = [
-    { url: "https://in.linkedin.com/company/adiya-business-solution", label: "LinkedIn" },
-    { url: "https://www.facebook.com/adiyabusinesssolution", label: "Facebook" },
-    { url: "https://x.com/adiyabusiness", label: "X (Twitter)" },
-    { url: "https://www.instagram.com/adiyabusinesssolution", label: "Instagram" },
-  ];
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.6, -0.05, 0.01, 0.99]
-      }
-    }
+  /* shared colour tokens matching the Navbar */
+  const tk = {
+    surface: isLightMode ? "bg-white" : "bg-[#0e0e14]",
+    surfaceAlt: isLightMode ? "bg-slate-50" : "bg-[#13131c]",
+    border: isLightMode ? "border-slate-200" : "border-slate-800",
+    card: isLightMode
+      ? "bg-white border-slate-200 hover:border-indigo-300 hover:shadow-md hover:shadow-indigo-100"
+      : "bg-slate-900/60 border-slate-800 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-900/30",
+    headText: isLightMode ? "text-slate-900" : "text-slate-100",
+    bodyText: isLightMode ? "text-slate-500" : "text-slate-400",
+    link: isLightMode
+      ? "text-slate-600 hover:text-indigo-600"
+      : "text-slate-400 hover:text-indigo-400",
+    iconBg: isLightMode
+      ? "bg-indigo-50 text-indigo-600"
+      : "bg-indigo-950/60 text-indigo-400",
   };
 
   return (
     <footer
-      className={`relative border-t ${
-        isLightMode 
-          ? "bg-gradient-to-b from-white to-gray-50 border-gray-200" 
-          : "bg-gradient-to-b from-gray-900 to-gray-950 border-gray-800"
-      } transition-colors duration-300`}
+      className={`relative border-t ${tk.surface} ${tk.border} transition-colors duration-300 overflow-hidden`}
     >
-      {/* Decorative top border */}
-      <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600"></div>
+      {/* Top accent bar — matches Navbar progress bar palette */}
+      <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-indigo-500 via-violet-500 to-fuchsia-500" />
 
-      {/* Floating Scroll to Top Button */}
+      {/* Soft ambient glow behind the footer (dark mode only) */}
+      {!isLightMode && (
+        <div
+          className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-10 blur-3xl"
+          style={{ background: "radial-gradient(ellipse, #6366f1, transparent 70%)" }}
+        />
+      )}
+
+      {/* ── Scroll-to-top FAB ── */}
       <AnimatePresence>
         {showScrollTop && (
           <motion.button
             onClick={scrollToTop}
-            initial={{ opacity: 0, scale: 0 }}
+            initial={{ opacity: 0, scale: 0.6 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0 }}
+            exit={{ opacity: 0, scale: 0.6 }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
-            className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg ${
-              isLightMode 
-                ? "bg-white border-2 border-gray-200 text-gray-700 hover:border-blue-500" 
-                : "bg-gray-800 border-2 border-gray-700 text-gray-300 hover:border-blue-500"
-            } backdrop-blur-sm transition-colors duration-300`}
+            className={`
+              fixed bottom-8 right-8 z-50 w-11 h-11 rounded-xl flex items-center justify-center
+              border shadow-lg backdrop-blur-sm transition-colors duration-300
+              ${isLightMode
+                ? "bg-white border-slate-200 text-slate-700 hover:border-indigo-400 hover:text-indigo-600"
+                : "bg-slate-900 border-slate-700 text-slate-300 hover:border-indigo-500 hover:text-indigo-400"
+              }
+            `}
             aria-label="Scroll to top"
           >
-            <ArrowUp className="w-5 h-5" />
+            <ArrowUp className="w-4 h-4" />
           </motion.button>
         )}
       </AnimatePresence>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12"
-        >
-          {/* Company Info Section */}
-          <motion.div variants={itemVariants} className="lg:col-span-5 space-y-6">
+      {/* ── Main grid ── */}
+      <div className="max-w-7xl mx-auto px-5 sm:px-10 xl:px-20 py-14 lg:py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
+          {/* ── Brand column ── */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:col-span-4 flex flex-col gap-7"
+          >
+            {/* Logo */}
+            <Link to="/" className="flex items-center gap-2.5 group w-fit">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center text-white font-bold text-lg shadow-md group-hover:shadow-indigo-500/40 group-hover:scale-105 transition-all duration-300">
+                A
+              </div>
+              <span className="font-bold text-xl tracking-tight bg-gradient-to-r from-indigo-500 to-violet-600 bg-clip-text text-transparent">
+                Adiya
+              </span>
+            </Link>
+
+            <p className={`text-sm leading-relaxed max-w-xs ${tk.bodyText}`}>
+              India's premier startup accelerator — transforming visions into
+              reality with expert guidance and cutting-edge solutions.
+            </p>
+
+            {/* Contact cards */}
+            <div className="flex flex-col gap-2.5">
+              {[
+                {
+                  href: "mailto:proposal@adiyabusinesssolution.com",
+                  icon: <Mail className="w-4 h-4" />,
+                  label: "Email Us",
+                  value: "proposal@adiyabusinesssolution.com",
+                },
+                {
+                  href: "tel:+919372194890",
+                  icon: <Phone className="w-4 h-4" />,
+                  label: "Call Us",
+                  value: "+91 93721 94890",
+                },
+              ].map(({ href, icon, label, value }) => (
+                <motion.a
+                  key={href}
+                  href={href}
+                  whileHover={{ x: 4 }}
+                  className={`flex items-center gap-3 p-3 rounded-xl border transition-all duration-300 group ${tk.card}`}
+                >
+                  <span className={`p-2 rounded-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300 ${tk.iconBg}`}>
+                    {icon}
+                  </span>
+                  <div className="min-w-0">
+                    <p className={`text-[10px] font-semibold uppercase tracking-wider mb-0.5 ${tk.bodyText}`}>
+                      {label}
+                    </p>
+                    <p className={`text-xs font-medium truncate ${tk.headText}`}>{value}</p>
+                  </div>
+                </motion.a>
+              ))}
+            </div>
+
+            {/* Socials */}
             <div>
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-4">
-                ADIYA Business Solution
-              </h2>
-              <p className={`text-sm lg:text-base leading-relaxed ${
-                isLightMode ? "text-gray-600" : "text-gray-400"
-              }`}>
-                India's premier startup accelerator, transforming visions into reality with expert guidance and cutting-edge solutions.
+              <p className={`text-xs font-semibold uppercase tracking-wider mb-3 ${tk.bodyText}`}>
+                Follow us
               </p>
-            </div>
-
-            {/* Contact Info Cards */}
-            <div className="space-y-3">
-              <motion.a
-                href="mailto:proposal@adiyabusinesssolution.com"
-                whileHover={{ x: 5 }}
-                className={`flex items-center gap-3 p-3 rounded-xl border ${
-                  isLightMode 
-                    ? "bg-white border-gray-200 hover:border-blue-400 hover:shadow-md" 
-                    : "bg-gray-800/50 border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10"
-                } transition-all duration-300 group`}
-              >
-                <div className={`p-2 rounded-lg ${
-                  isLightMode ? "bg-blue-50 text-blue-600" : "bg-blue-900/30 text-blue-400"
-                } group-hover:scale-110 transition-transform duration-300`}>
-                  <Mail className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className={`text-xs font-medium ${
-                    isLightMode ? "text-gray-500" : "text-gray-400"
-                  }`}>Email Us</p>
-                  <p className={`text-sm font-semibold ${
-                    isLightMode ? "text-gray-800" : "text-gray-200"
-                  }`}>proposal@adiyabusinesssolution.com</p>
-                </div>
-              </motion.a>
-
-              <motion.a
-                href="tel:+919372194890"
-                whileHover={{ x: 5 }}
-                className={`flex items-center gap-3 p-3 rounded-xl border ${
-                  isLightMode 
-                    ? "bg-white border-gray-200 hover:border-blue-400 hover:shadow-md" 
-                    : "bg-gray-800/50 border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10"
-                } transition-all duration-300 group`}
-              >
-                <div className={`p-2 rounded-lg ${
-                  isLightMode ? "bg-blue-50 text-blue-600" : "bg-blue-900/30 text-blue-400"
-                } group-hover:scale-110 transition-transform duration-300`}>
-                  <Phone className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className={`text-xs font-medium ${
-                    isLightMode ? "text-gray-500" : "text-gray-400"
-                  }`}>Call Us</p>
-                  <p className={`text-sm font-semibold ${
-                    isLightMode ? "text-gray-800" : "text-gray-200"
-                  }`}>+91 93721 94890</p>
-                </div>
-              </motion.a>
-            </div>
-
-            {/* Social Icons */}
-            <div>
-              <h4 className={`text-sm font-semibold mb-3 ${
-                isLightMode ? "text-gray-800" : "text-gray-200"
-              }`}>Follow Us</h4>
-              <div className="flex gap-3">
-                {socialLinks.map((social, index) => (
+              <div className="flex gap-2">
+                {socialLinks.map((s, i) => (
                   <motion.a
-                    key={social.url}
-                    href={social.url}
+                    key={s.url}
+                    href={s.url}
                     target="_blank"
                     rel="noopener noreferrer"
                     initial={{ opacity: 0, scale: 0 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -3 }}
+                    transition={{ delay: i * 0.07 }}
+                    whileHover={{ y: -3, scale: 1.08 }}
                     whileTap={{ scale: 0.95 }}
-                    className={`p-2 rounded-lg ${
-                      isLightMode 
-                        ? "bg-gray-100 hover:bg-blue-50" 
-                        : "bg-gray-800 hover:bg-gray-700"
-                    } transition-colors duration-300`}
-                    aria-label={social.label}
+                    className={`w-9 h-9 rounded-lg flex items-center justify-center border transition-all duration-300 ${
+                      isLightMode
+                        ? "border-slate-200 bg-white hover:border-indigo-300"
+                        : "border-slate-800 bg-slate-900 hover:border-indigo-600"
+                    }`}
+                    aria-label={s.label}
                   >
                     <SocialIcon
-                      url={social.url}
-                      style={{ height: 24, width: 24 }}
-                      className="transition-transform duration-300"
+                      url={s.url}
+                      style={{ height: 22, width: 22 }}
                     />
                   </motion.a>
                 ))}
@@ -260,166 +264,150 @@ const Footer = () => {
             </div>
           </motion.div>
 
-          {/* Navigation Sections */}
-          <motion.div variants={itemVariants} className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-8">
-            {footerSections.map((section) => (
-              <div key={section.title}>
-                <motion.h3
-                  className={`text-base lg:text-lg font-bold mb-4 flex justify-between items-center cursor-pointer lg:cursor-default ${
-                    isLightMode ? "text-gray-800" : "text-gray-200"
-                  }`}
-                  onClick={() => toggleSection(section.title)}
-                  whileHover={{ x: 3 }}
-                >
-                  {section.title}
-                  {isMobile && (
-                    <motion.div
-                      animate={{ rotate: openSection === section.title ? 180 : 0 }}
-                      transition={{ duration: 0.3 }}
-                    >
-                      <ChevronUp className="w-5 h-5 lg:hidden" />
-                    </motion.div>
-                  )}
-                </motion.h3>
-                <AnimatePresence>
-                  <motion.ul
-                    className={`space-y-2 overflow-hidden ${
-                      openSection === section.title || !isMobile
-                        ? "block"
-                        : "hidden lg:block"
+          {/* ── Nav sections ── */}
+          <motion.div
+            variants={fadeUp}
+            custom={1}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-3 gap-8"
+          >
+            {footerSections.map((section) => {
+              const isOpen = openSection === section.title;
+              return (
+                <div key={section.title}>
+                  <button
+                    onClick={() => toggle(section.title)}
+                    className={`w-full flex items-center justify-between mb-4 group focus:outline-none ${
+                      isMobile ? "cursor-pointer" : "cursor-default"
                     }`}
-                    initial={isMobile ? { height: 0 } : { height: "auto" }}
-                    animate={isMobile ? { height: openSection === section.title ? "auto" : 0 } : { height: "auto" }}
-                    exit={isMobile ? { height: 0 } : {}}
-                    transition={{ duration: 0.3 }}
                   >
-                    {section.items.map((item, index) => (
-                      <motion.li
-                        key={item.name}
-                        initial={{ opacity: 0, x: -10 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: index * 0.05 }}
+                    <span className={`text-xs font-bold uppercase tracking-widest ${tk.headText}`}>
+                      {section.title}
+                    </span>
+                    {isMobile && (
+                      <motion.span
+                        animate={{ rotate: isOpen ? 180 : 0 }}
+                        transition={{ duration: 0.25 }}
+                        className={tk.bodyText}
                       >
-                        <Link
-                          to={item.link}
-                          className={`text-sm inline-block ${
-                            isLightMode 
-                              ? "text-gray-600 hover:text-blue-600" 
-                              : "text-gray-400 hover:text-blue-400"
-                          } transition-all duration-200 hover:translate-x-1`}
-                        >
-                          {item.name}
-                        </Link>
-                      </motion.li>
-                    ))}
-                  </motion.ul>
-                </AnimatePresence>
-              </div>
+                        <ChevronDown className="w-4 h-4" />
+                      </motion.span>
+                    )}
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {(!isMobile || isOpen) && (
+                      <motion.ul
+                        key="list"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.28, ease: "easeInOut" }}
+                        className="overflow-hidden space-y-2"
+                      >
+                        {section.items.map((item, idx) => (
+                          <motion.li
+                            key={item.name}
+                            custom={idx}
+                            variants={fadeUp}
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true }}
+                          >
+                            <Link
+                              to={item.link}
+                              className={`text-sm inline-flex items-center gap-1.5 transition-all duration-200 hover:translate-x-1 ${tk.link}`}
+                            >
+                              {item.name}
+                            </Link>
+                          </motion.li>
+                        ))}
+                      </motion.ul>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </motion.div>
+
+          {/* ── Offices ── */}
+          <motion.div
+            variants={fadeUp}
+            custom={2}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-80px" }}
+            className="lg:col-span-4 flex flex-col gap-4"
+          >
+            <p className={`text-xs font-bold uppercase tracking-widest mb-1 ${tk.headText}`}>
+              Our Offices
+            </p>
+            {offices.map((office, i) => (
+              <motion.div
+                key={office.name}
+                custom={i}
+                variants={fadeUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                className={`flex gap-3 p-4 rounded-xl border transition-all duration-300 group ${tk.card}`}
+              >
+                <span className={`mt-0.5 p-2 rounded-lg flex-shrink-0 group-hover:scale-110 transition-transform duration-300 ${tk.iconBg}`}>
+                  <MapPin className="w-3.5 h-3.5" />
+                </span>
+                <div>
+                  <p className={`text-xs font-semibold mb-1 ${tk.headText}`}>
+                    {office.name}
+                  </p>
+                  <p className={`text-xs leading-relaxed ${tk.bodyText}`}>
+                    {office.address}
+                  </p>
+                </div>
+              </motion.div>
             ))}
           </motion.div>
+        </div>
 
-          {/* Office Locations */}
-          <motion.div variants={itemVariants} className="lg:col-span-3 space-y-4">
-            <h3 className={`text-base lg:text-lg font-bold mb-4 ${
-              isLightMode ? "text-gray-800" : "text-gray-200"
-            }`}>
-              Our Offices
-            </h3>
-            <div className="space-y-3">
-              {offices.map((office, index) => (
-                <motion.div
-                  key={office.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className={`p-4 rounded-xl border ${
-                    isLightMode 
-                      ? "bg-white border-gray-200 hover:border-blue-300 hover:shadow-md" 
-                      : "bg-gray-800/50 border-gray-700 hover:border-blue-500 hover:shadow-lg hover:shadow-blue-500/10"
-                  } transition-all duration-300 group`}
-                >
-                  <div className="flex items-start gap-3">
-                    <div className={`p-2 rounded-lg mt-1 flex-shrink-0 ${
-                      isLightMode ? "bg-blue-50 text-blue-600" : "bg-blue-900/30 text-blue-400"
-                    } group-hover:scale-110 transition-transform duration-300`}>
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className={`text-sm font-semibold mb-1 ${
-                        isLightMode ? "text-gray-800" : "text-gray-200"
-                      }`}>{office.name}</h4>
-                      <p className={`text-xs leading-relaxed ${
-                        isLightMode ? "text-gray-600" : "text-gray-400"
-                      }`}>{office.address}</p>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </motion.div>
-
-        {/* Bottom Section */}
+        {/* ── Bottom bar ── */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.5 }}
-          className={`mt-12 pt-8 border-t ${
-            isLightMode ? "border-gray-200" : "border-gray-800"
-          }`}
+          transition={{ delay: 0.4 }}
+          className={`mt-14 pt-8 border-t ${tk.border}`}
         >
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-6">
-            <p className={`text-sm ${
-              isLightMode ? "text-gray-600" : "text-gray-400"
-            }`}>
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-5">
+            <p className={`text-xs ${tk.bodyText}`}>
               © {new Date().getFullYear()} ADIYA Business Solution. All rights reserved.
             </p>
-            
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <Link
-                to="/terms"
-                className={`${
-                  isLightMode 
-                    ? "text-gray-600 hover:text-blue-600" 
-                    : "text-gray-400 hover:text-blue-400"
-                } transition-colors duration-200`}
-              >
-                Terms of Use
-              </Link>
-              <span className={isLightMode ? "text-gray-300" : "text-gray-700"}>•</span>
-              <Link
-                to="/privacy"
-                className={`${
-                  isLightMode 
-                    ? "text-gray-600 hover:text-blue-600" 
-                    : "text-gray-400 hover:text-blue-400"
-                } transition-colors duration-200`}
-              >
-                Privacy Policy
-              </Link>
-              <span className={isLightMode ? "text-gray-300" : "text-gray-700"}>•</span>
-              <Link
-                to="/cookies"
-                className={`${
-                  isLightMode 
-                    ? "text-gray-600 hover:text-blue-600" 
-                    : "text-gray-400 hover:text-blue-400"
-                } transition-colors duration-200`}
-              >
-                Cookie Notice
-              </Link>
+
+            <div className="flex flex-wrap justify-center items-center gap-1 text-xs">
+              {[
+                { name: "Terms of Use", link: "/terms" },
+                { name: "Privacy Policy", link: "/privacy" },
+                { name: "Cookie Notice", link: "/cookies" },
+              ].map((l, i, arr) => (
+                <React.Fragment key={l.name}>
+                  <Link to={l.link} className={`transition-colors duration-200 ${tk.link}`}>
+                    {l.name}
+                  </Link>
+                  {i < arr.length - 1 && (
+                    <span className={`mx-1.5 ${isLightMode ? "text-slate-300" : "text-slate-700"}`}>
+                      ·
+                    </span>
+                  )}
+                </React.Fragment>
+              ))}
             </div>
           </div>
 
-          <p className={`text-xs lg:text-sm mt-6 text-center leading-relaxed ${
-            isLightMode ? "text-gray-500" : "text-gray-500"
-          }`}>
-            The ADIYA platform consists of the website, web platform, and mobile applications. 
-            By using ADIYA, you agree to be bound by our Terms & Conditions, Cookie Notice, and Privacy Policy. 
-            All trademarks and registered trademarks are the property of their respective owners.
+          <p className={`text-[11px] mt-5 text-center leading-relaxed max-w-3xl mx-auto ${tk.bodyText}`}>
+            The ADIYA platform consists of the website, web platform, and mobile
+            applications. By using ADIYA, you agree to our Terms & Conditions,
+            Cookie Notice, and Privacy Policy. All trademarks are the property
+            of their respective owners.
           </p>
         </motion.div>
       </div>

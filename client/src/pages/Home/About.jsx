@@ -11,12 +11,7 @@ const aboutContent = {
     "We are India's most comprehensive startup accelerator, offering end-to-end solutions from ideation to scale. Our expert team specializes in Product Development, Rigorous Testing, Strategic Team Building, MVP Launch, Digital Marketing Excellence, Brand Promotion, Investment Deck Creation, and Professional Pitch Training. We don't just support your startup—we become your strategic growth partner.",
   image:
     "https://cdn.dribbble.com/users/3577980/screenshots/12205878/media/cdf4d6523060a4f95061163760f928f5.jpg?resize=1200x900&vertical=center",
-  stats: [
-    { value: "500+", label: "Startups Launched", icon: "🚀", color: "blue" },
-    // { value: "₹100Cr+", label: "Funding Secured", icon: "💰", color: "green" },
-    { value: "95%", label: "Success Rate", icon: "📈", color: "purple" },
-    { value: "24/7", label: "Expert Support", icon: "🎯", color: "orange" },
-  ],
+  
   features: [
     { icon: "✓", text: "Comprehensive product development" },
     { icon: "✓", text: "Strategic market positioning" },
@@ -28,7 +23,6 @@ const aboutContent = {
 const AboutSection = () => {
   const navigate = useNavigate();
   const { isLightMode } = useTheme();
-  const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
     AOS.init({
@@ -82,7 +76,7 @@ const AboutSection = () => {
             </div>
 
             {/* Title */}
-            <h2 className={`text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight ${
+            <h2 className={`text-4xl sm:text-5xl lg:text-5xl font-bold leading-tight ${
               isLightMode 
                 ? "bg-gradient-to-r from-gray-900 via-blue-800 to-purple-900 bg-clip-text text-transparent" 
                 : "bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent"
@@ -134,34 +128,7 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-400 opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
             </button>
 
-            {/* Stats Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-              {aboutContent.stats.map((stat, index) => (
-                <div
-                  key={index}
-                  className={`group relative p-5 rounded-2xl border backdrop-blur-sm transition-all duration-300 hover:scale-105 cursor-pointer overflow-hidden ${
-                    isLightMode 
-                      ? "bg-white border-gray-200 hover:border-blue-300 hover:shadow-xl" 
-                      : "bg-gray-800/50 border-gray-700 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-500/20"
-                  }`}
-                >
-                  {/* Gradient background on hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${colorClasses[stat.color]} opacity-0 group-hover:opacity-5 transition-opacity duration-300`} />
-                  
-                  <div className="relative z-10 text-center space-y-2">
-                    <div className="text-3xl mb-1">{stat.icon}</div>
-                    <h4 className={`text-2xl sm:text-3xl font-bold bg-gradient-to-r ${colorClasses[stat.color]} bg-clip-text text-transparent`}>
-                      {stat.value}
-                    </h4>
-                    <p className={`text-xs font-medium ${
-                      isLightMode ? "text-gray-600" : "text-gray-400"
-                    }`}>
-                      {stat.label}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+           
           </div>
 
           {/* Image Section with enhanced effects */}

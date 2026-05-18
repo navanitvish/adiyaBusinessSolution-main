@@ -73,7 +73,7 @@ const About = () => {
                 </span>
               </motion.div>
               
-              <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 leading-tight ${isLightMode ? "text-gray-900" : "text-gray-100"}`}>
+              <h1 className={`text-3xl sm:text-4xl lg:text-5xl font-bold mb-6 leading-tight ${isLightMode ? "text-gray-900" : "text-gray-100"}`}>
                 Transforming{" "}
                 <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
                   Business
